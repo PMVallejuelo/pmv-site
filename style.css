@@ -42,7 +42,7 @@ img{max-width:100%; display:block}
 
 /* -------- Utilidades -------- */
 .container{width:min(1100px, 92%); margin:auto}
-.muted{color:#6b7280; font-size:.9rem}
+.muted{color:#cbd5e1; font-size:.92rem}
 .accent{color:var(--pmv-plateado)}
 
 /* =========================================================
@@ -118,7 +118,13 @@ img{max-width:100%; display:block}
   color:var(--pmv-blanco);
   border-bottom:1px solid rgba(255,255,255,.06);
 }
-.nav .container{display:flex; align-items:center; gap:1rem}
+/* Contenedor flexible SIEMPRE con wrap para evitar desbordes */
+.nav .container{
+  display:flex; align-items:center; gap:1rem;
+  flex-wrap:wrap;                  /* <-- clave para que Contacto no se salga */
+}
+
+/* Botón hamburguesa (oculto en desktop) */
 .nav__toggle{
   display:none;            /* se muestra en móvil */
   background:transparent; color:#fff;
@@ -126,29 +132,35 @@ img{max-width:100%; display:block}
   padding:.55rem .8rem; border-radius:10px;
   font-weight:600; letter-spacing:.02em;
 }
+
+/* Lista de enlaces */
 .nav__list{
-  display:flex; gap:1.2rem; align-items:center;
-  list-style:none; margin:0; padding:.75rem 0;
+  display:flex; gap:1.1rem; align-items:center;
+  list-style:none; margin:0; padding:.6rem 0;
   position:relative;
+  flex-wrap:wrap;           /* si no cabe, baja a segunda línea dentro del banner */
 }
+
 .nav a{
-  color:#e8eef6; text-decoration:none; font-weight:600;
-  padding:.45rem .6rem; border-radius:10px;
+  color:#e8eef6; text-decoration:none; font-weight:700;
+  padding:.42rem .6rem; border-radius:10px;
   transition:background .2s ease, color .2s ease, transform .12s ease;
+  white-space:nowrap;       /* evita que palabras se rompan feo */
 }
 .nav a:hover{ background:rgba(255,255,255,.08) }
 
+/* Botones */
 .btn{display:inline-block; border-radius:12px; font-weight:800}
 .btn--primary{
-  background:#123e79; color:#fff; padding:.75rem 1.05rem;
+  background:#123e79; color:#fff; padding:.7rem 1.05rem;
   box-shadow: var(--shadow-1); border:1px solid rgba(255,255,255,.12);
 }
 .btn--ghost{
   background:transparent; color:#fff; border:2px solid rgba(255,255,255,.25);
-  padding:.65rem 1rem;
+  padding:.62rem 1rem;
 }
 .btn--danger{
-  background:var(--pmv-rojo); color:#fff; padding:.6rem 1rem;
+  background:var(--pmv-rojo); color:#fff; padding:.57rem .95rem;
   box-shadow:0 8px 16px rgba(215,38,56,.28); border:0;
 }
 
@@ -162,6 +174,13 @@ img{max-width:100%; display:block}
 }
 .has-submenu:hover > .submenu{ display:block }
 .submenu a{ display:block }
+
+/* Pequeño ajuste de compacidad antes de pasar a hamburguesa */
+@media (max-width: 1200px){
+  .nav__list{ gap:.7rem }
+  .nav a{ padding:.38rem .5rem; font-weight:700; font-size:.97rem }
+  .btn--danger{ padding:.52rem .85rem }
+}
 
 /* =========================================================
    HERO
@@ -181,6 +200,7 @@ img{max-width:100%; display:block}
   color:var(--pmv-rojo);
   font-weight:800;
   font-style:italic;
+  font-size:clamp(1.4rem, 2.2vw + 1rem, 2.2rem);
 }
 .hero h1{
   margin:.25rem 0 1.2rem;
