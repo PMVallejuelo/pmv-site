@@ -1,22 +1,192 @@
-/* Estilos iniciales - Policía Municipal de Vallejuelo */
+/* =========================================================
+   Policía Municipal de Vallejuelo – Estilos principales
+   Autor: WEB PAGE POLICIA MUNICIPAL VALLEJUELO
+   ========================================================= */
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f4f4f4;
-  color: #222;
-  text-align: center;
+/* ---------- Variables y reset básico ---------- */
+:root{
+  --blue-700:#0A3A70;
+  --blue-600:#1E40AF;
+  --blue-900:#0f172a;
+  --ink:#131722;
+  --muted:#6b7280;
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --line:#e5e7eb;
+  --danger:#C62828;
 }
 
-h1 {
-  background: #002147;
-  color: white;
-  margin: 0;
-  padding: 20px;
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--blue-600);text-decoration:none}
+a:hover{opacity:.9}
+a:focus, button:focus{outline:3px solid #60a5fa; outline-offset:2px}
+
+/* ---------- Botones ---------- */
+.btn{
+  display:inline-block;
+  padding:.75rem 1rem;
+  border-radius:.9rem;
+  border:1px solid transparent;
+  font-weight:700;
+  transition:.18s ease;
+  text-align:center;
+}
+.btn--primary{background:var(--blue-700);color:#fff}
+.btn--primary:hover{filter:brightness(1.05)}
+.btn--danger{background:var(--danger);color:#fff}
+.btn--ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+.btn--ghost:hover{background:#f9fafb}
+
+/* ---------- Topbar ---------- */
+.topbar{
+  background:var(--blue-900);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:.6rem 1rem;
+}
+.brand__logo{
+  height:56px;
+  width:auto;
+  background:#fff;
+  border-radius:.4rem;
+  padding:.25rem;
+  box-shadow:0 1px 0 rgba(0,0,0,.15);
+}
+.topbar__title{ text-align:center }
+.topbar__title .kicker{
+  display:block;
+  font-size:.8rem;
+  color:#cbd5e1;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.topbar__title strong{font-size:1.25rem}
+
+/* ---------- Navegación ---------- */
+.nav{
+  background:#111827;
+  color:#fff;
+  position:sticky; top:0; z-index:20;
+  box-shadow:0 2px 6px rgba(0,0,0,.15);
+}
+.nav__toggle{
+  display:none;
+  background:#1f2937; color:#fff; border:0;
+  padding:.8rem 1rem; font-size:1.05rem;
+  width:100%; text-align:left;
+}
+.nav__list{
+  display:flex; flex-wrap:wrap; gap:.25rem;
+  list-style:none; margin:0; padding:.55rem 1rem;
+}
+.nav__list>li>a, .nav__list>li>.btn, .submenu__btn{
+  color:#fff;
+  padding:.55rem .8rem;
+  border-radius:.6rem;
+  display:inline-block;
+}
+.nav__list>li>a:hover{ background:#1f2937 }
+
+/* Submenú */
+.has-submenu{ position:relative }
+.submenu__btn{
+  background:#1f2937; border:0; font-weight:600;
+}
+.submenu{
+  position:absolute; left:0; top:100%;
+  min-width:240px; background:#0b1220; border:1px solid #243041;
+  border-radius:.8rem; padding:.5rem; list-style:none; margin:.4rem 0;
+  display:none;
+}
+.submenu.show{ display:block }
+.submenu a{
+  color:#fff; display:block; padding:.55rem .75rem; border-radius:.5rem;
+}
+.submenu a:hover{ background:#111827 }
+
+/* ---------- Hero / Banner ---------- */
+.hero{
+  background:linear-gradient(180deg, var(--blue-700) 0%, var(--blue-600) 100%);
+  color:#fff; text-align:center;
+  padding:3rem 1rem 2.5rem;
+}
+.hero__logo{
+  width:min(260px,70%);
+  margin:0 auto 1rem;
+  background:#fff; border-radius:1rem; padding:.5rem;
+  box-shadow:0 8px 24px rgba(0,0,0,.15);
+}
+.hero h1{
+  margin:0 0 1rem; font-size:clamp(1.6rem,4vw,2.35rem); font-weight:800;
+}
+.hero .accent{ color:#e5e7eb }
+.hero__cta{
+  display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap;
 }
 
-p {
-  font-size: 18px;
-  margin-top: 20px;
+/* ---------- Tarjeta Denuncias ---------- */
+.denuncias{
+  display:grid; grid-template-columns:1.2fr .8fr; gap:1rem;
+  max-width:1100px; margin:2rem auto; background:var(--card);
+  border-radius:1rem; padding:1rem; border:1px solid var(--line);
+}
+.denuncias__text h2{ margin:.25rem 0 }
+.denuncias__text ul{ margin:.5rem 0 .75rem 1rem }
+.denuncias__qr{ align-self:center; text-align:center }
+.denuncias__qr img{ width:min(220px,90%); margin:0 auto }
+.muted{ color:var(--muted); font-size:.9rem }
+
+/* ---------- Secciones ---------- */
+.section{
+  max-width:1100px; margin:2rem auto;
+  background:var(--card); border:1px solid var(--line);
+  border-radius:1rem; padding:1rem;
+}
+.section h2{ margin:.25rem 0 1rem }
+.mvv{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1rem }
+.mvv article{ background:#fafafa; border:1px solid var(--line); border-radius:.8rem; padding:1rem }
+.bullets{ margin:.5rem 0 .75rem 1rem }
+
+/* ---------- Contacto ---------- */
+.contact .link{ font-weight:700 }
+
+/* ---------- Footer ---------- */
+.footer{
+  background:var(--blue-900); color:#cbd5e1;
+  text-align:center; padding:1rem; margin-top:2rem;
+}
+
+/* ---------- Utilidades ---------- */
+.card{background:var(--card); border:1px solid var(--line); border-radius:1rem; padding:1rem}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:1rem}
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
+.center{text-align:center}
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .nav__toggle{ display:block }
+  .nav__list{ display:none; flex-direction:column }
+  .nav__list.show{ display:flex }
+  .submenu{ position:static; margin-top:.35rem }
+  .denuncias{ grid-template-columns:1fr; }
+  .topbar__title strong{ font-size:1.1rem }
+  .brand__logo{ height:50px }
+}
+
+@media (max-width:560px){
+  .hero{ padding:2.2rem 1rem }
+  .hero__logo{ width:min(220px,80%) }
 }
