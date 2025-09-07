@@ -5,77 +5,177 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Policía Municipal de Vallejuelo</title>
   <meta name="description" content="Policía Municipal de Vallejuelo — (Por amor a mi pueblo), siempre al servicio." />
-  <link rel="icon" type="image/png" href="images/Logo Policia Municipal Vallejuelo.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+
+  <!-- Tipografía -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Encabezado -->
-  <header class="topbar">
-    <div class="brand">
-      <!-- Logo Ayuntamiento -->
-      <img src="images/Logo Ayuntamiento Vallejuelo.jpg" alt="Ayuntamiento Municipal de Vallejuelo" class="brand__logo brand__logo--large">
-      
-      <div class="brand__text">
-        <span class="brand__kicker">(Por amor a mi pueblo)</span>
-        <strong class="brand__title">Policía Municipal</strong>
-      </div>
-      
-      <!-- Escudo Nacional -->
-      <img src="images/ESCUDO REPUBLICA DOMINICANA.png" alt="Escudo República Dominicana" class="brand__logo brand__logo--large">
+  <!-- Topbar con logotipos -->
+  <header class="topbar" role="banner">
+    <!-- Izquierda: Logo del Ayuntamiento -->
+    <a class="brand brand--left" href="/" aria-label="Ayuntamiento Municipal de Vallejuelo">
+      <img src="images/logo-ayuntamiento.jpg" alt="Logo Ayuntamiento Municipal de Vallejuelo" class="brand__logo">
+    </a>
+
+    <!-- Título institucional -->
+    <div class="topbar__title" aria-label="Nombre de la institución">
+      <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
+      <strong>Policía Municipal</strong>
     </div>
-    
-    <button class="nav__toggle" id="navToggle" aria-label="Abrir menú">☰</button>
-    <nav class="nav" id="siteNav">
-      <a href="#inicio">Inicio</a>
-      <a href="https://www.policiamunicipalvallejuelo.com.do/historia">Historia</a>
-      <a href="#noticias">Noticias</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#reclutamiento">Reclutamiento 2025</a>
-      <a href="#agentes">Agentes Activos</a>
-      <a href="#documentos">Documentos</a>
-      <a href="#denuncias" class="btn btn--small btn--danger">Denuncias</a>
-      <a href="https://www.policiamunicipalvallejuelo.com.do/Despacho_Director" class="btn btn--small btn--gold">Despacho del Director</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+
+    <!-- Derecha: Escudo de la República Dominicana -->
+    <a class="brand brand--right" href="/" aria-label="Escudo de la República Dominicana">
+      <img src="images/escudo-rd.png" alt="Escudo de la República Dominicana" class="brand__logo">
+    </a>
   </header>
 
-  <!-- Hero -->
+  <!-- Navegación principal -->
+  <nav class="nav" aria-label="Menú principal">
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">☰ Menú</button>
+    <ul class="nav__list" id="siteNav">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="https://policiamunicipalvallejuelo.com.do/historia" target="_blank" rel="noopener">Historia</a></li>
+      <li><a href="/Noticias/">Noticias</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="/Reclutamiento/">Reclutamiento 2025</a></li>
+
+      <li class="has-submenu">
+        <button class="submenu__btn" aria-haspopup="true" aria-expanded="false">Agentes Activos</button>
+        <ul class="submenu" aria-label="Agentes Activos">
+          <li><a href="/Agentes_Activos/Oficiales_Superiores/">Oficiales Superiores</a></li>
+          <li><a href="/Agentes_Activos/Oficiales_Subalternos/">Oficiales Subalternos</a></li>
+          <li><a href="/Agentes_Activos/Alistados/">Alistados</a></li>
+          <!-- Colaboradores NO aparece en el menú (acceso solo por URL/QR) -->
+        </ul>
+      </li>
+
+      <!-- Nota: por ahora tus PDFs están en /docs/. Si luego usamos /documents/, actualizamos el enlace. -->
+      <li><a href="/docs/">Documentos</a></li>
+
+      <li><a class="btn btn--danger" href="https://forms.zoho.com/directorpoliciamunici1/form/Contactwithfile" target="_blank" rel="noopener">Denuncias</a></li>
+      <li><a class="btn btn--ghost" href="https://www.policiamunicipal.com.do/Despacho_Director" target="_blank" rel="noopener">Despacho del Director</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
   <main id="inicio">
-    <section class="hero">
-      <img src="images/Foto para Portada.jpg" alt="Agentes de la Policía Municipal de Vallejuelo" class="hero__bg" />
+    <!-- HERO / Banner central -->
+    <section class="hero" aria-label="Banner institucional">
+      <!-- Si quieres usar la foto de portada de fondo, descomenta la siguiente línea y añadimos CSS para .hero__bg -->
+      <!-- <img class="hero__bg" src="images/Foto para Portada.jpg" alt="Agentes de la Policía Municipal de Vallejuelo"> -->
+
       <div class="hero__content">
-        <h1>(Por amor a mi pueblo),<br /><span class="accent">siempre al servicio</span></h1>
+        <img class="hero__logo" src="images/logo-pmv.jpg" alt="Logo Policía Municipal de Vallejuelo">
+        <h1>(Por amor a mi pueblo),<br><span class="accent">siempre al servicio</span></h1>
         <div class="hero__cta">
-          <a href="#denuncias" class="btn btn--primary">Reportar una denuncia</a>
-          <a href="#documentos" class="btn btn--ghost">Ver documentos</a>
+          <a class="btn btn--primary" href="https://forms.zoho.com/directorpoliciamunici1/form/Contactwithfile" target="_blank" rel="noopener">Reportar una denuncia</a>
+          <a class="btn btn--ghost" href="/docs/">Ver documentos</a>
         </div>
       </div>
     </section>
+
+    <!-- Sección Denuncias con QR -->
+    <section class="denuncias" id="denuncias" aria-label="Denuncias">
+      <div class="denuncias__text">
+        <h2>Denuncias</h2>
+        <p>Tu reporte es confidencial. Respuesta en 24–48 horas hábiles.</p>
+        <ul>
+          <li>Adjunta fotos o videos como evidencia.</li>
+          <li>Para emergencias, llama al <strong>809-527-4529</strong>.</li>
+        </ul>
+        <p>
+          <a class="btn btn--primary" href="https://forms.zoho.com/directorpoliciamunici1/form/Contactwithfile" target="_blank" rel="noopener">Abrir Formulario</a>
+        </p>
+      </div>
+      <figure class="denuncias__qr">
+        <img src="images/qr-denuncias.png" alt="Código QR para abrir el Formulario de Denuncias">
+        <figcaption class="muted">Escanea el QR para denunciar</figcaption>
+      </figure>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="section" aria-label="Servicios">
+      <h2>Servicios</h2>
+      <ul class="bullets">
+        <li>Seguridad ciudadana y control del espacio público.</li>
+        <li>Apoyo a emergencias municipales y ordenamiento vial local.</li>
+        <li>Educación comunitaria en convivencia y civismo.</li>
+      </ul>
+    </section>
+
+    <!-- Historia / Misión / Visión -->
+    <section id="historia" class="section mvv" aria-label="Historia, Misión y Visión">
+      <article>
+        <h3>Historia</h3>
+        <p>Reseña breve de la Policía Municipal de Vallejuelo.</p>
+        <p style="margin-top:.75rem;">
+          <a class="btn btn--ghost" href="https://policiamunicipalvallejuelo.com.do/historia" target="_blank" rel="noopener">Leer historia completa</a>
+        </p>
+      </article>
+      <article>
+        <h3>Misión</h3>
+        <p>Servir y proteger con respeto, integridad y cercanía comunitaria.</p>
+      </article>
+      <article>
+        <h3>Visión</h3>
+        <p>Ser una institución moderna, profesional y ejemplar en convivencia ciudadana.</p>
+      </article>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section contact" aria-label="Contacto">
+      <h2>Contacto</h2>
+      <p><strong>Dirección:</strong>
+        <a class="link" href="https://maps.app.goo.gl/Qvp8DBDtWRc59D3A7" target="_blank" rel="noopener">
+          Calle Independencia, casi esquina José Muba, Vallejuelo, San Juan
+        </a>
+      </p>
+      <p><strong>Teléfono:</strong> 809-527-4529 &nbsp;·&nbsp; <strong>Correo:</strong> <a class="link" href="mailto:director@policiamunicipalvallejuelo.com.do">director@policiamunicipalvallejuelo.com.do</a></p>
+      <p>
+        <a class="link" href="https://www.facebook.com/profile.php?id=61566567914938" target="_blank" rel="noopener">Facebook</a> ·
+        <a class="link" href="https://www.instagram.com/policiamunicipalvallejuelo/" target="_blank" rel="noopener">Instagram</a>
+      </p>
+    </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer" id="contacto">
-    <p><strong>Policía Municipal de Vallejuelo</strong></p>
-    <p>
-      Dirección: <a href="https://maps.app.goo.gl/Qvp8DBDtWRc59D3A7" target="_blank">
-        Calle Independencia casi esquina José Muba, Vallejuelo, San Juan
-      </a>
-    </p>
-    <p>Teléfono: (809) 000-0000 | Email: info@policiamunicipalvallejuelo.com.do</p>
-    <p>
-      <a href="https://www.facebook.com/profile.php?id=61566567914938" target="_blank">Facebook</a> |
-      <a href="https://www.instagram.com/policiamunicipalvallejuelo/" target="_blank">Instagram</a>
-    </p>
-    <p>&copy; 2025 Policía Municipal de Vallejuelo. Todos los derechos reservados.</p>
+  <footer class="footer" role="contentinfo">
+    <small>© <span id="year"></span> Policía Municipal de Vallejuelo · “Por amor a mi pueblo”.</small>
   </footer>
 
+  <!-- JS del sitio -->
   <script src="script.js"></script>
-</body>
-</html>
+  <script>
+    // Año dinámico
+    (function(){ var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
 
-    });
+    // Menú responsive
+    (function(){
+      const navBtn = document.getElementById('navToggle');
+      const nav = document.getElementById('siteNav');
+      if(!navBtn || !nav) return;
+      navBtn.addEventListener('click', () => {
+        const open = nav.classList.toggle('show');
+        navBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    })();
+
+    // Submenú accesible
+    (function(){
+      document.querySelectorAll('.submenu__btn').forEach(btn=>{
+        const ul = btn.nextElementSibling;
+        btn.addEventListener('click', ()=>{
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', (!expanded).toString());
+          ul.classList.toggle('show');
+        });
+      });
+    })();
   </script>
 </body>
 </html>
