@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agentes Activos — Oficiales Superiores</title>
+  <meta name="description" content="Listado oficial de agentes activos — Oficiales Subalternos." />
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .page{max-width:1200px;margin:0 auto;padding:2rem 1rem}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+    figure{background:#0d1b2a;border:1px solid #1f2f46;border-radius:14px;padding:.75rem}
+    img{width:100%;border-radius:10px;background:#fff}
+    figcaption{margin-top:.5rem;color:#a8b3c7;font-size:.95rem}
+    @media (max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:820px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:520px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>Agentes Activos — Oficiales Superiores</h1>
+    <p class="muted">Solo se muestran agentes activos. Para actualizar, sube o reemplaza la imagen del carnet en esta misma carpeta.</p>
+
+    <div class="grid">
+      <!-- DUPLICA ESTE BLOQUE POR CADA AGENTE -->
+      <figure>
+        <img src="./rolando.jpg" alt="Rolando Encarnacion">
+        <figcaption> Rolando Encarnacion </figcaption>
+      </figure>
+
+      <!-- ejemplo extra:
+      <figure>
+        <img src="./carnet-nombre-apellido.jpg" alt="Carnet Nombre Apellido">
+        <figcaption>Nombre Apellido — Rango</figcaption>
+      </figure>
+      -->
+    </div>
+  </main>
+</body>
+</html>
