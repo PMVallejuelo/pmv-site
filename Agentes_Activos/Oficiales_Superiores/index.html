@@ -5,39 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Agentes Activos — Oficiales Superiores</title>
   <meta name="description" content="Listado oficial de agentes activos — Oficiales Superiores." />
-  <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+  <!-- Favicon (ruta relativa desde esta carpeta) -->
+  <link rel="icon" type="image/png" href="../../images/favicon.png" />
+
+  <!-- Tipografía -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Estilos globales del sitio -->
+  <link rel="stylesheet" href="../../style.css" />
+
   <style>
+    /* Estilos específicos de esta página */
     .page{max-width:1200px;margin:0 auto;padding:2rem 1rem}
     .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
     figure{background:#0d1b2a;border:1px solid #1f2f46;border-radius:14px;padding:.75rem}
-    img{width:100%;border-radius:10px;background:#fff}
-    figcaption{margin-top:.5rem;color:#a8b3c7;font-size:.95rem}
+    figure img{width:100%;border-radius:10px;background:#fff;display:block}
+    figure figcaption{margin-top:.5rem;color:#a8b3c7;font-size:.95rem}
+
     @media (max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
     @media (max-width:820px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:520px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
+  <!-- Topbar con logotipos (mismo estilo del home, rutas relativas) -->
+  <header class="topbar" role="banner">
+    <a class="brand brand--left" href="https://ayuntamientovallejuelo.gob.do/" aria-label="Ayuntamiento Municipal de Vallejuelo">
+      <img src="../../images/logo-ayuntamiento.jpg" alt="Logo Ayuntamiento Municipal de Vallejuelo" class="brand__logo">
+    </a>
+
+    <div class="topbar__title" aria-label="Nombre de la institución">
+      <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
+      <strong>Policía Municipal</strong>
+    </div>
+
+    <a class="brand brand--right" href="https://presidencia.gob.do/" aria-label="Presidencia de la República Dominicana">
+      <img src="../../images/escudo-rd.png" alt="Escudo de la República Dominicana" class="brand__logo">
+    </a>
+  </header>
+
   <main class="page">
     <h1>Agentes Activos — Oficiales Superiores</h1>
     <p class="muted">Solo se muestran agentes activos.</p>
 
     <div class="grid">
-      <!-- DUPLICA ESTE BLOQUE POR CADA AGENTE -->
+      <!-- Tarjeta del Director -->
       <figure>
-        <img src="./carnet-david-rivera.jpg" alt="Carnet David José Rivera Caro">
+        <!-- OJO: aquí usamos .jpeg porque así está el archivo en la carpeta -->
+        <img src="./carnet-david-rivera.jpeg" alt="Carnet David José Rivera Caro">
         <figcaption>David José Rivera Caro — Director</figcaption>
       </figure>
 
-      <!-- ejemplo extra:
+      <!-- Copia/pega este bloque por cada agente (sube su imagen a esta misma carpeta) -->
+      <!--
       <figure>
-        <img src="./carnet-nombre-apellido.jpg" alt="Carnet Nombre Apellido">
+        <img src="./carnet-nombre-apellido.jpeg" alt="Carnet Nombre Apellido">
         <figcaption>Nombre Apellido — Rango</figcaption>
       </figure>
       -->
     </div>
   </main>
+
+  <footer class="footer" role="contentinfo">
+    <small>© <span id="year"></span> Policía Municipal de Vallejuelo · “Por amor a mi pueblo”.</small>
+  </footer>
+
+  <script>
+    // Año dinámico
+    (function(){ var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
+  </script>
 </body>
 </html>
