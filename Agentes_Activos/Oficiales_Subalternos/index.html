@@ -3,41 +3,153 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agentes Activos — Oficiales Superiores</title>
-  <meta name="description" content="Listado oficial de agentes activos — Oficiales Subalternos." />
-  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <title>Agentes Activos — Oficiales Subalternos</title>
+  <meta name="description" content="Listado oficial de agentes activos — Oficiales Subalternos de la Policía Municipal de Vallejuelo." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../../images/favicon.png" />
+
+  <!-- Tipografía -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="../../style.css" />
+
   <style>
-    .page{max-width:1200px;margin:0 auto;padding:2rem 1rem}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-    figure{background:#0d1b2a;border:1px solid #1f2f46;border-radius:14px;padding:.75rem}
-    img{width:100%;border-radius:10px;background:#fff}
-    figcaption{margin-top:.5rem;color:#a8b3c7;font-size:.95rem}
-    @media (max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
-    @media (max-width:820px){.grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:520px){.grid{grid-template-columns:1fr}}
+    /* Estilos específicos */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    figure {
+      background: #0d1b2a;
+      border: 1px solid #1f2f46;
+      border-radius: 14px;
+      padding: .75rem;
+      cursor: pointer;
+      transition: transform .2s ease;
+    }
+    figure:hover { transform: scale(1.02); }
+    figure img {
+      width: 100%;
+      border-radius: 10px;
+      background: #fff;
+      display: block;
+    }
+    figure figcaption {
+      margin-top: .5rem;
+      color: #a8b3c7;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,.85);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 85%;
+      border-radius: 12px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.6);
+    }
+    .modal:target {
+      display: flex;
+    }
+
+    /* Responsive */
+    @media (max-width: 820px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
+  <!-- Topbar -->
+  <header class="topbar" role="banner">
+    <a class="brand brand--left" href="https://ayuntamientovallejuelo.gob.do/" aria-label="Ayuntamiento Municipal de Vallejuelo">
+      <img src="../../images/logo-ayuntamiento.jpg" alt="Logo Ayuntamiento Municipal de Vallejuelo" class="brand__logo">
+    </a>
+
+    <div class="topbar__title">
+      <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
+      <strong>Policía Municipal</strong>
+    </div>
+
+    <a class="brand brand--right" href="https://presidencia.gob.do/" aria-label="Presidencia de la República Dominicana">
+      <img src="../../images/escudo-rd.png" alt="Escudo de la República Dominicana" class="brand__logo">
+    </a>
+  </header>
+
   <main class="page">
-    <h1>Agentes Activos — Oficiales Superiores</h1>
-    <p class="muted">Solo se muestran agentes activos. Para actualizar, sube o reemplaza la imagen del carnet en esta misma carpeta.</p>
+    <h1>Agentes Activos — Oficiales Subalternos</h1>
+    <p class="muted">Solo se muestran agentes activos.</p>
 
     <div class="grid">
-      <!-- DUPLICA ESTE BLOQUE POR CADA AGENTE -->
-      <figure>
-        <img src="./rolando.jpg" alt="Rolando Encarnacion">
-        <figcaption> Rolando Encarnacion </figcaption>
+      <figure onclick="openModal('./fran.jpeg','Fran — Capitán')">
+        <img src="./fran.jpeg" alt="Fran">
+        <figcaption>Francisco Gonzalez Encarnacion — 2do Teniente</figcaption>
       </figure>
 
-      <!-- ejemplo extra:
-      <figure>
-        <img src="./carnet-nombre-apellido.jpg" alt="Carnet Nombre Apellido">
-        <figcaption>Nombre Apellido — Rango</figcaption>
+      <figure onclick="openModal('./alfonso.jpeg','Alfonso — Capitán')">
+        <img src="./alfonso.jpeg" alt="Alfonso">
+        <figcaption>Alfonso Jesus Martinez Encarnacion — 1er Teniente</figcaption>
       </figure>
-      -->
+
+      <figure onclick="openModal('./tito.jpeg','Tito — Primer Teniente')">
+        <img src="./tito.jpeg" alt="Tito">
+        <figcaption>Tito Encarnacion Galva — Capitan</figcaption>
+      </figure>
+
+      <figure onclick="openModal('./fernelis.jpeg','Fernelis — Primer Teniente')">
+        <img src="./fernelis.jpeg" alt="Fernelis">
+        <figcaption>Fernelis de la Rosa Castillo — 1er Teniente</figcaption>
+      </figure>
+
+      <figure onclick="openModal('./felix.jpeg','Félix — Segundo Teniente')">
+        <img src="./felix.jpeg" alt="Felix">
+        <figcaption>Félix Manuel Montero Martinez — Capitan</figcaption>
+      </figure>
     </div>
   </main>
+
+  <footer class="footer">
+    <small>© <span id="year"></span> Policía Municipal de Vallejuelo · “Por amor a mi pueblo, siempre al servicio.”</small>
+  </footer>
+
+  <!-- Modal -->
+  <div id="imgModal" class="modal" onclick="closeModal()">
+    <img id="modalImg" src="" alt="">
+  </div>
+
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Funciones modal
+    function openModal(src, alt){
+      document.getElementById('modalImg').src = src;
+      document.getElementById('modalImg').alt = alt;
+      document.getElementById('imgModal').style.display = 'flex';
+    }
+    function closeModal(){
+      document.getElementById('imgModal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
