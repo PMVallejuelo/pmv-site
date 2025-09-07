@@ -15,6 +15,7 @@
   --danger:#C62828;     /* botón denuncias */
   --gold:#CFAF3C;       /* acento dorado */
   --dark:#0b1020;       /* gris oscuro/negro */
+  --red-700:#B91C1C;    /* rojo para el eslogan */
 }
 
 *{box-sizing:border-box}
@@ -50,7 +51,7 @@ a:focus,button:focus{outline:3px solid #60a5fa; outline-offset:2px}
 .btn--ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
 .btn--ghost:hover{background:#f9fafb}
 
-/* ---------- Topbar ---------- */
+/* ---------- Topbar (logos y títulos) ---------- */
 .topbar{
   background:var(--blue-900);
   color:#fff;
@@ -61,26 +62,33 @@ a:focus,button:focus{outline:3px solid #60a5fa; outline-offset:2px}
   padding:.6rem 1rem;
   border-bottom:3px solid var(--gold);
 }
+
+/* logos del ayuntamiento y escudo RD más grandes */
 .brand__logo{
-  height:78px;                 /* logos MÁS GRANDES */
+  height:86px;                 /* ↑ tamaño */
   width:auto;
   background:#fff;
-  border-radius:.45rem;
-  padding:.3rem;
+  border-radius:.48rem;
+  padding:.34rem;
   box-shadow:
     0 1px 0 rgba(0,0,0,.15),
-    0 0 0 3px rgba(207,175,60,.08); /* aro dorado sutil */
+    0 0 0 3px rgba(207,175,60,.08);
 }
-.topbar__title{text-align:center}
+.brand--left, .brand--right{display:inline-block}
+.brand--left:hover img, .brand--right:hover img{transform:translateY(-1px)}
+.brand--left img, .brand--right img{transition:transform .15s ease}
+
+/* títulos del encabezado más grandes */
+.topbar__title{text-align:center; line-height:1.15}
 .topbar__title .kicker{
   display:block;
-  font-size:.8rem;
+  font-size:1.05rem;           /* ↑ tamaño */
   color:#cbd5e1;
   text-transform:uppercase;
   letter-spacing:.06em;
 }
 .topbar__title strong{
-  font-size:1.28rem;
+  font-size:1.5rem;            /* ↑ tamaño */
   position:relative;
   display:inline-block;
   padding-bottom:2px;
@@ -92,7 +100,9 @@ a:focus,button:focus{outline:3px solid #60a5fa; outline-offset:2px}
 }
 
 @media (max-width:900px){
-  .brand__logo{ height:64px }
+  .brand__logo{ height:72px }
+  .topbar__title .kicker{ font-size:.92rem }
+  .topbar__title strong{ font-size:1.3rem }
 }
 
 /* ---------- Navegación ---------- */
@@ -117,7 +127,7 @@ a:focus,button:focus{outline:3px solid #60a5fa; outline-offset:2px}
 }
 .nav__list>li>a:hover{ background:#1f2937 }
 
-/* Botón “ghost” dentro del nav (siempre visible) */
+/* Botón ghost dentro del nav (visible siempre) */
 .nav .btn--ghost{
   background:transparent;
   color:#fff;
@@ -149,9 +159,8 @@ a:focus,button:focus{outline:3px solid #60a5fa; outline-offset:2px}
   background:linear-gradient(180deg, var(--blue-700) 0%, var(--blue-600) 100%);
   color:#fff; text-align:center;
   padding:3rem 1rem 2.5rem;
-  border-bottom:4px solid var(--gold);  /* línea dorada */
-  position:relative;
-  overflow:hidden;
+  border-bottom:4px solid var(--gold);
+  position:relative; overflow:hidden;
 }
 .hero__bg{
   position:absolute; inset:0; width:100%; height:100%;
@@ -164,16 +173,14 @@ a:focus,button:focus{outline:3px solid #60a5fa; outline-offset:2px}
   background:#fff; border-radius:1rem; padding:.5rem;
   box-shadow:0 10px 26px rgba(0,0,0,.18), 0 0 0 4px rgba(207,175,60,.1);
 }
-.hero h1{
-  margin:0 0 .5rem;
-  font-size:clamp(1.6rem,4vw,2.35rem);
-  font-weight:800;
+
+/* Eslogan en COMILLAS, rojo e itálica */
+.hero h1{ margin:0 0 .5rem; font-size:clamp(1.6rem,4vw,2.35rem); font-weight:800 }
+.slogan{
+  color:var(--red-700);
+  font-style:italic;
 }
-.hero .accent{
-  display:inline-block;
-  font-size:.9em;          /* slogan un poco más pequeño */
-  color:#e5e7eb;
-}
+.hero .accent{ display:inline-block; font-size:1em; color:#e5e7eb } /* “siempre al servicio” */
 .hero__cta{ display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap }
 
 /* ---------- Tarjeta Denuncias ---------- */
@@ -232,8 +239,8 @@ a:focus,button:focus{outline:3px solid #60a5fa; outline-offset:2px}
   .nav__list.show{ display:flex }
   .submenu{ position:static; margin-top:.35rem }
   .denuncias{ grid-template-columns:1fr; }
-  .topbar__title strong{ font-size:1.16rem }
-  .brand__logo{ height:64px }
+  .topbar__title strong{ font-size:1.28rem }
+  .brand__logo{ height:72px }
 }
 
 @media (max-width:560px){
