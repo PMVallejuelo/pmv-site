@@ -243,21 +243,27 @@ a:focus,button:focus{outline:3px solid #60a5fa; outline-offset:2px}
   .brand__logo{ height:72px }
 /* Ajustes de logos en móviles */
 @media (max-width: 768px) {
-  .topbar {
-    flex-direction: column;
+   .topbar{
+    display: flex;
+    flex-direction: row;         /* EN FILA (no en columna) */
     align-items: center;
+    justify-content: space-between; /* izquierda – centro – derecha */
     text-align: center;
   }
 
   .brand__logo {
-    max-height: 60px;  /* hace que los logos no se vean enormes */
+    max-height: 55px;  /* hace que los logos no se vean enormes */
     width: auto;
     margin: 0.5rem;
   }
 
-  .topbar__title {
-    font-size: 1rem;
-    margin-top: 0.5rem;
+   .topbar__title{
+    flex: 1;           /* ocupa el centro entre los dos logos */
+    font-size: 0.95rem;
+    margin: 0 0.5rem;
+    text-align: center;
+      .topbar__title strong{
+    font-size: 1.2rem; /* “Policía Municipal” un poco más grande en móvil */
   }
 }
 }
