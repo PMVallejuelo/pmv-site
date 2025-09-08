@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Documentos — Policía Municipal de Vallejuelo</title>
+  <meta name="description" content="Descarga los documentos oficiales de la Policía Municipal de Vallejuelo: Manual, Estatutos y Código de Ética." />
+
+  <!-- Favicon (ruta relativa desde /docs/) -->
+  <link rel="icon" type="image/png" href="../images/favicon.png" />
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos globales (ruta relativa) -->
+  <link rel="stylesheet" href="../style.css" />
+
+  <style>
+    /* Ajustes visuales solo para esta página */
+    .page{max-width:1100px;margin:0 auto;padding:2rem 1rem}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .doc{
+      background:#0d1b2a;border:1px solid #1f2f46;border-radius:16px;
+      padding:1rem;box-shadow:0 10px 24px rgba(0,0,0,.18);
+      display:flex;flex-direction:column;justify-content:space-between;min-height:170px;
+    }
+    .doc h3{margin:.25rem 0 .5rem;color:#e9f0ff;font-size:1.05rem}
+    .doc p{margin:0 0 .9rem;color:#a8b3c7}
+    .doc a.btn{align-self:flex-start}
+    @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:560px){ .grid{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <!-- Topbar con logotipos -->
+  <header class="topbar" role="banner">
+    <a class="brand brand--left" href="https://ayuntamientovallejuelo.gob.do/" aria-label="Ayuntamiento Municipal de Vallejuelo">
+      <img src="../images/logo-ayuntamiento.jpg" alt="Logo Ayuntamiento Municipal de Vallejuelo" class="brand__logo">
+    </a>
+
+    <div class="topbar__title" aria-label="Nombre de la institución">
+      <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
+      <strong>Policía Municipal</strong>
+    </div>
+
+    <a class="brand brand--right" href="https://presidencia.gob.do/" aria-label="Presidencia de la República Dominicana">
+      <img src="../images/escudo-rd.png" alt="Escudo de la República Dominicana" class="brand__logo">
+    </a>
+  </header>
+
+  <!-- Navegación principal (rutas absolutas para que funcionen desde /docs/) -->
+  <nav class="nav" aria-label="Menú principal">
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">☰ Menú</button>
+    <ul class="nav__list" id="siteNav">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="https://policiamunicipalvallejuelo.com.do/historia" target="_blank" rel="noopener">Historia</a></li>
+      <li><a href="/noticias/Noticias/">Noticias</a></li>
+      <li><a href="/#servicios">Servicios</a></li>
+      <li><a href="/Reclutamiento/">Reclutamiento 2025</a></li>
+
+      <li class="has-submenu">
+        <button class="submenu__btn" aria-haspopup="true" aria-expanded="false">Agentes Activos</button>
+        <ul class="submenu" aria-label="Agentes Activos">
+          <li><a href="/Agentes_Activos/Oficiales_Superiores/">Oficiales Superiores</a></li>
+          <li><a href="/Agentes_Activos/Oficiales_Subalternos/">Oficiales Subalternos</a></li>
+          <li><a href="/Agentes_Activos/Alistados/">Alistados</a></li>
+        </ul>
+      </li>
+
+      <li><a class="btn btn--danger" href="https://forms.zoho.com/directorpoliciamunici1/form/Contactwithfile" target="_blank" rel="noopener">Denuncias</a></li>
+      <li><a class="btn btn--ghost" href="https://www.policiamunicipal.com.do/Despacho_Director" target="_blank" rel="noopener">Despacho del Director</a></li>
+      <li><a href="/#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main class="page">
+    <h1>Documentos</h1>
+    <p class="muted">Descarga los documentos oficiales de la institución.</p>
+
+    <div class="grid">
+      <article class="doc">
+        <div>
+          <h3>Manual de la Policía Municipal de Vallejuelo</h3>
+          <p>Procedimientos y lineamientos operativos.</p>
+        </div>
+        <a class="btn btn--primary" href="./Manual_de_la_Policia_Municipal_Vallejuelo.pdf" target="_blank" rel="noopener">Ver / Descargar</a>
+      </article>
+
+      <article class="doc">
+        <div>
+          <h3>Estatutos de la Policía Municipal de Vallejuelo</h3>
+          <p>Marco institucional y organización interna.</p>
+        </div>
+        <a class="btn btn--primary" href="./Estatutos_Policia_Municipal_vallejuelo.pdf" target="_blank" rel="noopener">Ver / Descargar</a>
+      </article>
+
+      <article class="doc">
+        <div>
+          <h3>Código de Ética de la Policía Municipal de Vallejuelo</h3>
+          <p>Principios y valores que rigen nuestra labor.</p>
+        </div>
+        <a class="btn btn--primary" href="./Codigo_de_Etica_Policia_Municipal_vallejuelo.pdf" target="_blank" rel="noopener">Ver / Descargar</a>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <small>© <span id="year"></span> Policía Municipal de Vallejuelo · “Por amor a mi pueblo, siempre al servicio.”</small>
+  </footer>
+
+  <!-- JS del sitio (ruta relativa) -->
+  <script src="../script.js"></script>
+  <script>
+    (function(){ var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
+  </script>
+</body>
+</html>
