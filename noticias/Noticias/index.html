@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Noticias — Policía Municipal de Vallejuelo</title>
+  <meta name="description" content="Actividades y novedades de la Policía Municipal de Vallejuelo." />
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .page{max-width:1000px;margin:0 auto;padding:2rem 1rem}
+    .post{background:#0d1b2a;border:1px solid #1f2f46;border-radius:16px;padding:1.25rem;margin-bottom:1rem}
+    .post h3{margin:.25rem 0}
+    .meta{color:#a8b3c7;font-size:.9rem;margin-bottom:.5rem}
+  </style>
+</head>
+<body>
+  <!-- Topbar institucional -->
+  <header class="topbar" role="banner">
+    <a class="brand brand--left" href="https://ayuntamientovallejuelo.gob.do/" aria-label="Ayuntamiento Municipal de Vallejuelo">
+      <img src="/images/logo-ayuntamiento.jpg" alt="Logo Ayuntamiento Municipal de Vallejuelo" class="brand__logo">
+    </a>
+    <div class="topbar__title" aria-label="Nombre de la institución">
+      <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
+      <strong>Policía Municipal</strong>
+    </div>
+    <a class="brand brand--right" href="https://presidencia.gob.do/" aria-label="Presidencia de la República Dominicana">
+      <img src="/images/escudo-rd.png" alt="Escudo de la República Dominicana" class="brand__logo">
+    </a>
+  </header>
+
+  <!-- Navegación -->
+  <nav class="nav" aria-label="Menú principal">
+    <div class="container">
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">☰ Menú</button>
+      <ul class="nav__list" id="siteNav">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="https://policiamunicipalvallejuelo.com.do/historia" target="_blank" rel="noopener">Historia</a></li>
+        <li><a href="/noticias/">Noticias</a></li>
+        <li><a href="/#servicios">Servicios</a></li>
+        <li><a href="/Reclutamiento/">Reclutamiento 2025</a></li>
+        <li class="has-submenu">
+          <button class="submenu__btn" aria-haspopup="true" aria-expanded="false">Agentes Activos</button>
+          <ul class="submenu" aria-label="Agentes Activos">
+            <li><a href="/Agentes_Activos/Oficiales_Superiores/">Oficiales Superiores</a></li>
+            <li><a href="/Agentes_Activos/Oficiales_Subalternos/">Oficiales Subalternos</a></li>
+            <li><a href="/Agentes_Activos/Alistados/">Alistados</a></li>
+          </ul>
+        </li>
+        <li><a href="/docs/">Documentos</a></li>
+        <li><a class="btn btn--danger" href="https://forms.zoho.com/directorpoliciamunici1/form/Contactwithfile" target="_blank" rel="noopener">Denuncias</a></li>
+        <li><a class="btn btn--ghost" href="https://www.policiamunicipal.com.do/Despacho_Director" target="_blank" rel="noopener">Despacho del Director</a></li>
+        <li><a href="/#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="page">
+    <h1>Noticias</h1>
+
+    <article class="post">
+      <h3>Operativo comunitario en el Parque Central</h3>
+      <div class="meta">Publicado el 07/09/2025</div>
+      <p>La Policía Municipal realizó una jornada de orientación vial y convivencia pacífica junto a juntas de vecinos.</p>
+      <!-- Para fotos: súbelas a /noticias/ y usa <img src="./foto1.jpg" alt=""> -->
+    </article>
+
+    <!-- Duplica .post para nuevas noticias -->
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <small>© <span id="year"></span> Policía Municipal de Vallejuelo · “Por amor a mi pueblo, siempre al servicio.”</small>
+  </footer>
+
+  <script src="/script.js"></script>
+  <script>
+    (function(){var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();})();
+    (function(){
+      const navBtn=document.getElementById('navToggle');
+      const nav=document.getElementById('siteNav');
+      if(!navBtn||!nav) return;
+      navBtn.addEventListener('click',()=>{
+        const open=nav.classList.toggle('show');
+        navBtn.setAttribute('aria-expanded', open ? 'true':'false');
+      });
+      document.querySelectorAll('.submenu__btn').forEach(btn=>{
+        const ul=btn.nextElementSibling;
+        btn.addEventListener('click',()=>{
+          const expanded=btn.getAttribute('aria-expanded')==='true';
+          btn.setAttribute('aria-expanded', (!expanded).toString());
+          ul.classList.toggle('show');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
