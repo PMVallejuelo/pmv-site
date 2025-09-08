@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Historia — Policía Municipal de Vallejuelo</title>
+  <meta name="description" content="Historia, misión, visión, valores y marco legal de la Policía Municipal de Vallejuelo." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../images/favicon.png" />
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="../style.css" />
+
+  <style>
+    /* Ajustes suaves propios de esta página (se apoyan en style.css) */
+    .page { width:min(1100px,92%); margin:0 auto; padding:2rem 0 2.5rem; color:#eaf2ff; }
+    .lead { font-size:1.05rem; color:#cfe3ff; }
+
+    .hero-hist {
+      text-align:center; color:#fff; padding:2.25rem 1rem 1.25rem;
+    }
+    .hero-hist h1 { font-size:clamp(1.6rem, 1.2rem + 2vw, 2.4rem); margin:.25rem 0 .35rem; }
+    .hero-hist p.slogan { color:#ff5a65; font-style:italic; font-weight:800; margin:.2rem 0 0; }
+
+    .grid-2 { display:grid; gap:1.2rem; grid-template-columns: 1.2fr .8fr; }
+    .card { background:#102d4a; border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:1.1rem; }
+    .card h2 { margin:.2rem 0 .6rem; }
+    .card h3 { margin:0 0 .4rem; }
+
+    .values { display:grid; gap:1rem; grid-template-columns: repeat(2,1fr); }
+    .values li{ margin:.25rem 0; }
+
+    .timeline { border-left:3px solid rgba(212,175,55,.7); padding-left:1rem; }
+    .timeline li{ margin:.5rem 0; }
+
+    /* Galería con “zoom al clic” */
+    .gallery { display:grid; gap:1rem; grid-template-columns: repeat(3, 1fr); }
+    .figure { background:#0d1b2a; border:1px solid #1f2f46; border-radius:14px; padding:.6rem; box-shadow:0 10px 24px rgba(0,0,0,.25); }
+    .figure img { width:100%; height:auto; border-radius:10px; background:#fff; cursor:pointer; }
+    .figure figcaption { margin-top:.45rem; color:#a8b3c7; font-size:.92rem; text-align:center; }
+
+    /* Lightbox */
+    .lightbox {
+      position:fixed; inset:0; background:rgba(0,0,0,.85);
+      display:none; align-items:center; justify-content:center; padding:1rem; z-index:2000;
+    }
+    .lightbox.show { display:flex; }
+    .lightbox img { max-width:95vw; max-height:90vh; border-radius:14px; background:#fff; }
+    .lightbox .close {
+      position:absolute; top:14px; right:16px; background:#000a; color:#fff; border:0;
+      padding:.55rem .75rem; border-radius:10px; font-weight:700; cursor:pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .grid-2 { grid-template-columns:1fr; }
+      .values { grid-template-columns:1fr; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px){
+      .gallery { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Topbar institucional -->
+  <header class="topbar" role="banner">
+    <a class="brand brand--left" href="https://ayuntamientovallejuelo.gob.do/" aria-label="Ayuntamiento Municipal de Vallejuelo">
+      <img src="../images/logo-ayuntamiento.jpg" alt="Logo Ayuntamiento Municipal de Vallejuelo" class="brand__logo">
+    </a>
+
+    <div class="topbar__title" aria-label="Nombre de la institución">
+      <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
+      <strong>Policía Municipal</strong>
+    </div>
+
+    <a class="brand brand--right" href="https://presidencia.gob.do/" aria-label="Presidencia de la República Dominicana">
+      <img src="../images/escudo-rd.png" alt="Escudo de la República Dominicana" class="brand__logo">
+    </a>
+  </header>
+
+  <main class="page">
+    <!-- Encabezado de la sección -->
+    <section class="hero-hist">
+      <h1>Historia y Marco Institucional</h1>
+      <p class="slogan">“Por amor a mi pueblo, siempre al servicio.”</p>
+    </section>
+
+    <!-- Intro + Línea de tiempo -->
+    <section class="grid-2" aria-label="Introducción y hito fundacional">
+      <article class="card">
+        <h2>Bienvenidos a la Policía Municipal de Vallejuelo</h2>
+        <p class="lead">
+          La Policía Municipal de Vallejuelo es una institución auxiliar del Ayuntamiento,
+          comprometida con garantizar la seguridad ciudadana, el orden público, el respeto al medio ambiente
+          y el cumplimiento de las ordenanzas municipales, bajo los principios de legalidad, integridad
+          y servicio a la comunidad.
+        </p>
+        <p>
+          Guiados por nuestro lema <strong>“Por amor a mi pueblo, siempre al servicio.”</strong>,
+          trabajamos cada día para construir un municipio más seguro, ordenado y digno para todos sus habitantes.
+        </p>
+      </article>
+
+      <aside class="card">
+        <h2>Hito fundacional</h2>
+        <ul class="timeline">
+          <li><strong>16 de agosto de 2024:</strong> Fundación formal de la Policía Municipal de Vallejuelo,
+              durante la gestión del Alcalde <strong>Lic. Eddy Morillo</strong>.</li>
+          <li><strong>Primer Director:</strong> <strong>Coronel Lic. David José Rivera Caro, M.A.</strong></li>
+          <li>Antes de 2024: el servicio operaba de forma discrecional. El personal se enfocaba
+              principalmente en la seguridad del ayuntamiento y del mercado municipal,
+              sin reconocerse formalmente como Policía Municipal.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- Misión / Visión / Valores / Marco legal -->
+    <section class="card" style="margin-top:1.1rem" aria-label="Misión Visión Valores Marco Legal">
+      <div class="grid-2">
+        <div>
+          <h2>Nuestra Misión</h2>
+          <p>
+            Servir a la comunidad de Vallejuelo mediante la preservación del orden público, la
+            protección del entorno urbano, la vigilancia de espacios públicos y la aplicación
+            de las normativas municipales, actuando con ética, transparencia y vocación de servicio.
+          </p>
+
+          <h2>Nuestra Visión</h2>
+          <p>
+            Ser una Policía Municipal modelo a nivel nacional, reconocida por su profesionalismo,
+            proximidad comunitaria y respeto a los derechos humanos, contribuyendo activamente
+            a una convivencia pacífica y al desarrollo sostenible de Vallejuelo.
+          </p>
+        </div>
+
+        <div>
+          <h2>Nuestros Valores</h2>
+          <ul class="values">
+            <li><strong>Legalidad:</strong> Cumplimos y hacemos cumplir la Constitución y las leyes.</li>
+            <li><strong>Servicio comunitario:</strong> Nuestra razón de ser es el bienestar ciudadano.</li>
+            <li><strong>Integridad y honestidad:</strong> Cero tolerancia a la corrupción.</li>
+            <li><strong>Equidad y respeto:</strong> Actuamos sin discriminación y con trato digno.</li>
+            <li><strong>Uso proporcional de la fuerza:</strong> Solo cuando es estrictamente necesario.</li>
+            <li><strong>Transparencia:</strong> Rendición de cuentas responsable y clara.</li>
+          </ul>
+
+          <h2 style="margin-top:1rem">Marco Legal</h2>
+          <p>
+            Nuestra labor se fundamenta en la <strong>Ley 176-07</strong>, la <strong>Ley 4984</strong>, el
+            <strong> Código Penal</strong> y las <strong>ordenanzas municipales</strong>, así como en el
+            <a class="link" href="../docs/Manual%20de%20la%20Policia%20Municipal%20Vallejuelo.pdf" target="_blank" rel="noopener">Manual</a>,
+            <a class="link" href="../docs/Estatutos%20Policia%20Municipal%20Vallejuelo.pdf" target="_blank" rel="noopener">Estatutos</a> y
+            <a class="link" href="../docs/Codigo%20de%20Etica%20Policia%20Municipal%20Vallejuelo.pdf" target="_blank" rel="noopener">Código de Ética</a>
+            de la Policía Municipal de Vallejuelo, en armonía con la Constitución y los tratados internacionales de derechos humanos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qué hacemos (operaciones) -->
+    <section class="card" style="margin-top:1.1rem" aria-label="Áreas de trabajo">
+      <h2>Compromiso con el Pueblo</h2>
+      <p>
+        Cada agente recibe formación continua y es evaluado bajo criterios éticos y profesionales.
+        Nuestra estructura organizativa responde con eficacia a las necesidades de la población
+        y coopera con otras instituciones del Estado.
+      </p>
+      <h3 style="margin-top:.8rem">Principales acciones desde la fundación formal (2024):</h3>
+      <ul class="bullets">
+        <li>Control de tránsito y apoyo a ordenamiento vial local.</li>
+        <li>Seguridad de espacios públicos: parques, cementerios y áreas recreativas.</li>
+        <li>Seguridad de eventos públicos y privados realizados en espacios públicos.</li>
+        <li>Servicios funerarios y acompañamiento cívico.</li>
+        <li>Operativos comunitarios y labores de proximidad ciudadana.</li>
+      </ul>
+    </section>
+
+    <!-- Galería histórica (clic para agrandar) -->
+    <section class="card" style="margin-top:1.1rem" aria-label="Galería histórica">
+      <h2>Galería histórica</h2>
+      <p class="muted">Haz clic en una imagen para verla en grande.</p>
+      <div class="gallery" id="histGallery">
+        <!-- Sube las fotos a /images y respeta estos nombres sugeridos -->
+        <figure class="figure">
+          <img src="../images/hist-2024-08-16-fundacion.jpg" alt="Fundación formal 16 de agosto de 2024" data-full="../images/hist-2024-08-16-fundacion.jpg">
+          <figcaption>Fundación formal — 16/08/2024</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <img src="../images/hist-operativo-transito-2024.jpg" alt="Operativo de tránsito 2024" data-full="../images/hist-operativo-transito-2024.jpg">
+          <figcaption>Operativo de tránsito (2024)</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <img src="../images/hist-seguridad-parque-2024.jpg" alt="Seguridad en parques 2024" data-full="../images/hist-seguridad-parque-2024.jpg">
+          <figcaption>Seguridad en espacios públicos (2024)</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <img src="../images/hist-evento-masivo-2024.jpg" alt="Cobertura de evento masivo" data-full="../images/hist-evento-masivo-2024.jpg">
+          <figcaption>Cobertura de eventos (2024)</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <img src="../images/hist-servicio-funerario-2024.jpg" alt="Servicio funerario municipal" data-full="../images/hist-servicio-funerario-2024.jpg">
+          <figcaption>Servicio funerario (2024)</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <img src="../images/hist-capacitacion-2024.jpg" alt="Capacitación de agentes" data-full="../images/hist-capacitacion-2024.jpg">
+          <figcaption>Capacitación de agentes (2024)</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <small>© <span id="year"></span> Policía Municipal de Vallejuelo · “Por amor a mi pueblo, siempre al servicio.”</small>
+  </footer>
+
+  <!-- Lightbox mínimo + año dinámico -->
+  <script>
+    (function(){ var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
+
+    (function(){
+      const box = document.createElement('div');
+      box.className = 'lightbox';
+      box.innerHTML = '<button class="close" aria-label="Cerrar imagen">Cerrar ✕</button><img alt="">';
+      document.body.appendChild(box);
+
+      const imgFull = box.querySelector('img');
+      const closeBtn = box.querySelector('.close');
+
+      document.getElementById('histGallery').addEventListener('click', e => {
+        const img = e.target.closest('img[data-full]');
+        if(!img) return;
+        imgFull.src = img.getAttribute('data-full');
+        imgFull.alt = img.alt || '';
+        box.classList.add('show');
+      });
+
+      const close = () => box.classList.remove('show');
+      closeBtn.addEventListener('click', close);
+      box.addEventListener('click', (e)=>{ if(e.target===box) close(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+    })();
+  </script>
+</body>
+</html>
