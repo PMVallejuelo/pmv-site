@@ -253,6 +253,61 @@ img{max-width:100%; display:block}
 }
 
 /* =========================================================
+   GALERÍA (Carrusel + Lightbox)
+   ========================================================= */
+.galeria { text-align:center; }
+.carousel{
+  position:relative;
+  max-width: 900px;             /* un poco más ancho que otras secciones */
+  margin: 0 auto;
+  overflow:hidden;
+  border-radius:14px;
+  box-shadow: var(--shadow-1);
+  background:#0d1f38;
+}
+.carousel__track{
+  display:flex;
+  transition: transform .5s ease-in-out;
+}
+.carousel__img{
+  width:100%;
+  flex-shrink:0;
+  cursor:zoom-in;
+  user-select:none;
+}
+.carousel__btn{
+  position:absolute; inset-block-start:50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,.5);
+  color:#fff; border:0; border-radius:12px;
+  font-size:2rem; line-height:1;
+  padding:.35rem .75rem;
+  cursor:pointer;
+}
+.carousel__btn.prev{ inset-inline-start:10px }
+.carousel__btn.next{ inset-inline-end:10px }
+
+/* Lightbox */
+.lightbox{
+  display:none;
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.82);
+  z-index: 9999;
+  align-items:center; justify-content:center;
+  padding: 1.2rem;
+}
+.lightbox__img{
+  max-width:95%; max-height:85%;
+  border-radius:12px;
+  box-shadow: var(--shadow-2);
+}
+.lightbox__close{
+  position:absolute; top:18px; right:26px;
+  font-size:2rem; color:#fff; cursor:pointer;
+  user-select:none;
+}
+
+/* =========================================================
    CONTACTO & FOOTER
    ========================================================= */
 .contact a.link{ color:#cfe3ff; text-decoration:underline dotted }
@@ -276,6 +331,9 @@ img{max-width:100%; display:block}
   .nav__list.show{ display:flex }
   .submenu{ position:static; display:none; width:100%; box-shadow:none; border:0; padding:.25rem 0 }
   .submenu.show{ display:block }
+
+  /* Galería: ancho cómodo en tablet */
+  .carousel{ max-width: 95% }
 }
 
 /* --- Ajuste general móvil: logos uno a la IZQ y otro a la DER --- */
@@ -304,6 +362,9 @@ img{max-width:100%; display:block}
   .topbar__title .kicker{ font-size:.98rem }
   .topbar__title strong{ font-size:1.65rem }
   .topbar__title strong::after{ width:170px; height:3px }
+
+  /* Galería */
+  .carousel__btn{ font-size:1.6rem; padding:.25rem .55rem }
 }
 
 /* --- Móviles medianos/pequeños --- */
@@ -312,4 +373,7 @@ img{max-width:100%; display:block}
   .hero__logo{ width:min(300px, 75vw); padding:.9rem; }
   .denuncias{ grid-template-columns:1fr; text-align:center }
   .mvv{ grid-template-columns:1fr } /* Historia/Misión/Visión apiladas */
+
+  /* Galería en móvil */
+  .carousel{ max-width: 96% }
 }
