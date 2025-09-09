@@ -1,0 +1,269 @@
+<!-- /galeria/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galería — Policía Municipal de Vallejuelo</title>
+  <meta name="description" content="Galería fotográfica de actividades y servicios de la Policía Municipal de Vallejuelo." />
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+    /* ======= Estilos específicos de Galería ======= */
+    .page{max-width:1200px;margin:0 auto;padding:2rem 1rem}
+    .gallery-toolbar{display:flex;gap:.75rem;align-items:center;justify-content:space-between;margin:.25rem 0 1rem}
+    .gallery-toolbar .muted{margin:0}
+
+    .gallery-grid{
+      display:grid;gap:.75rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .gallery-grid a{
+      display:block;border-radius:14px;overflow:hidden;
+      background:#0d1b2a;border:1px solid #1f2f46;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .gallery-grid a:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.25) }
+    .gallery-grid img{ width:100%; height:220px; object-fit:cover; display:block }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed; inset:0; background:rgba(3,10,20,.9);
+      display:none; align-items:center; justify-content:center; z-index:1100;
+      padding:1.5rem;
+    }
+    .lightbox.show{ display:flex }
+    .lightbox__img{
+      max-width:min(92vw,1100px);
+      max-height:82vh;
+      border-radius:16px; background:#000;
+      box-shadow:0 18px 44px rgba(0,0,0,.5);
+    }
+    .lightbox__close, .lightbox__prev, .lightbox__next{
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,.1); backdrop-filter:saturate(140%) blur(6px);
+      border:1px solid rgba(255,255,255,.25); color:#fff; font-weight:800;
+      padding:.65rem .8rem; border-radius:12px; cursor:pointer;
+    }
+    .lightbox__close{ top:1rem; right:1rem; transform:none }
+    .lightbox__prev{ left:1rem }
+    .lightbox__next{ right:1rem }
+    .lightbox__caption{
+      position:absolute; left:0; right:0; bottom:.6rem;
+      text-align:center; color:#cfe3ff; font-size:.95rem;
+      padding:.25rem .5rem;
+    }
+
+    @media (max-width:1100px){ .gallery-grid{grid-template-columns:repeat(3,1fr)} .gallery-grid img{height:200px} }
+    @media (max-width:820px){ .gallery-grid{grid-template-columns:repeat(2,1fr)} .gallery-grid img{height:190px} }
+    @media (max-width:520px){ .gallery-grid{grid-template-columns:1fr} .gallery-grid img{height:240px} }
+  </style>
+</head>
+<body>
+  <!-- Topbar consistente -->
+  <header class="topbar" role="banner">
+    <a class="brand brand--left" href="https://ayuntamientovallejuelo.gob.do/" aria-label="Ayuntamiento Municipal de Vallejuelo">
+      <img src="/images/logo-ayuntamiento.jpg" alt="Logo Ayuntamiento Municipal de Vallejuelo" class="brand__logo">
+    </a>
+    <div class="topbar__title" aria-label="Nombre de la institución">
+      <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
+      <strong>Policía Municipal</strong>
+    </div>
+    <a class="brand brand--right" href="https://presidencia.gob.do/" aria-label="Presidencia de la República Dominicana">
+      <img src="/images/escudo-rd.png" alt="Escudo de la República Dominicana" class="brand__logo">
+    </a>
+  </header>
+
+  <!-- Nav (idéntica al home, con enlace a Galería) -->
+  <nav class="nav" aria-label="Menú principal">
+    <div class="container">
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">☰ Menú</button>
+      <ul class="nav__list" id="siteNav">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="https://policiamunicipalvallejuelo.com.do/historia" target="_blank" rel="noopener">Historia</a></li>
+        <li><a href="/noticias/Noticias/">Noticias</a></li>
+        <li><a href="/#servicios">Servicios</a></li>
+        <li><a href="/Reclutamiento/">Reclutamiento 2025</a></li>
+        <li class="has-submenu">
+          <button class="submenu__btn" aria-haspopup="true" aria-expanded="false">Agentes Activos</button>
+          <ul class="submenu" aria-label="Agentes Activos">
+            <li><a href="/Agentes_Activos/Oficiales_Superiores/">Oficiales Superiores</a></li>
+            <li><a href="/Agentes_Activos/Oficiales_Subalternos/">Oficiales Subalternos</a></li>
+            <li><a href="/Agentes_Activos/Alistados/">Alistados</a></li>
+          </ul>
+        </li>
+        <li><a href="/docs/">Documentos</a></li>
+        <li><a class="btn btn--danger" href="https://forms.zohopublic.com/directorpoliciamunici1/form/Contactwithfile/formperma/sKCnBYODv-A-7dRHYM6uAtbA_HzSUeQJM_RgVktlMxY" target="_blank" rel="noopener">Denuncias</a></li>
+        <li><a class="btn btn--ghost" href="https://www.policiamunicipalvallejuelo.com.do/Despacho_Director" target="_blank" rel="noopener">Despacho del Director</a></li>
+        <li><a href="/#contacto">Contacto</a></li>
+        <li><a href="/galeria/">Galería</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="page">
+    <h1>Galería fotográfica</h1>
+    <div class="gallery-toolbar">
+      <p class="muted">Haz clic en una imagen para verla en grande.</p>
+      <a class="btn btn--ghost" href="/">← Volver al inicio</a>
+    </div>
+
+    <div id="grid" class="gallery-grid" aria-live="polite"></div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <small>© <span id="year"></span> Policía Municipal de Vallejuelo · “Por amor a mi pueblo, siempre al servicio.”</small>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Visor de imagen">
+    <img id="bigImg" class="lightbox__img" alt="">
+    <button class="lightbox__close" aria-label="Cerrar (Esc)">✕</button>
+    <button class="lightbox__prev" aria-label="Anterior (←)">‹</button>
+    <button class="lightbox__next" aria-label="Siguiente (→)">›</button>
+    <div id="caption" class="lightbox__caption"></div>
+  </div>
+
+  <script>
+    // Año dinámico
+    (function(){ var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
+
+    // Hamburguesa
+    (function(){
+      const navBtn = document.getElementById('navToggle');
+      const nav = document.getElementById('siteNav');
+      if(!navBtn || !nav) return;
+      navBtn.addEventListener('click', () => {
+        const open = nav.classList.toggle('show');
+        navBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.querySelectorAll('.submenu__btn').forEach(btn=>{
+        const ul = btn.nextElementSibling;
+        btn.addEventListener('click', ()=>{
+          const exp = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', (!exp).toString());
+          ul.classList.toggle('show');
+        });
+      });
+    })();
+
+    // ===== Carga de imágenes (edita este array para añadir/quitar) =====
+    const files = [
+      // Numeradas
+      "01.jpg","02.jpg","03.jpg","04.jpg","05.jpg","06.jpg","07.jpg","08.jpg","09.jpg","10.jpg","11.jpg",
+      "1.jpg","2.jpg","3.jpg",
+      "004.jpg","005.jpg","008.jpg","011.jpg",
+
+      // Nombres largos de Facebook (ejemplos de tu carpeta)
+      "475765607_122137935650552263_7025231184350214760_n.jpg",
+      "475915215_122137935752552263_1819462137343152279_n.jpg",
+      "476244269_122139179654552263_5105988929739229534_n.jpg",
+      "476334737_122139057596552263_5205252939124859094_n.jpg",
+      "476341279_122139179498552263_4159056523039844959_n.jpg",
+      "476349491_122139060032552263_4596721051329643318_n.jpg",
+      "476371390_122139057224552263_6569934809281413171_n.jpg",
+      "476411087_122139057398552263_7945922330688580731_n.jpg",
+      "476413296_122139179612552263_574228165747647612897_n.jpg",
+      "480154791_122141818706552263_2330712582836616310_n.jpg",
+      "480177734_122141818880552263_4050769875875761372_n.jpg",
+      "480198006_122140354520552263_2474741499839988259_n.jpg",
+      "480245299_122140348004552263_6715789210872248907_n.jpg",
+      "480254814_122145471482552263_3388114095714112291_n.jpg",
+      "480360809_122145022010552263_267246137392985390_n.jpg",
+      "480347723_122145471482552263_81977803641662564700_n.jpg",
+      "480430890_122141818832552263_949617660625100693_n.jpg",
+      "480695253_122141818748552263_8696928682656843963_n.jpg",
+      "480921506_122144022893552263_5399100078841908372_n.jpg",
+      "484724719_122148132530552263_5739083980879734675_n.jpg",
+      "484757706_122148133604552263_7009501796284931347_n.jpg",
+      "485061724_122148133706552263_6729633312541369764_n.jpg",
+      "485136703_122148133808552263_1768426452755959704_n.jpg",
+      "485173300_122148134485552263_55754902230242870767_n.jpg",
+      "487510932_122151461006552263_90777826688939532658_n.jpg",
+      "487512540_122151461018552263_8856510057915681933_n.jpg",
+      "487518178_122151460952552263_38183441588330780161_n.jpg",
+      "487930269_122151461060552263_65467998288082894273_n.jpg",
+      "488921675_122151461168552263_338682787223807975_n.jpg",
+      "491220387_122155195025552263_7730960767658849803_n.jpg",
+      "491958990_122155186505552263_536776057489582300_n.jpg",
+      "492005499_122155189892552263_4297005109839120050_n.jpg",
+      "492107824_122156817830552263_2273760641539256066_n.jpg",
+      "492308206_122156817840552263_888074832733977487264_n.jpg",
+      "492302075_122155518945552263_544575270600815504226_n.jpg",
+      "492305527_122155518104552263_2240631639105037809_n.jpg",
+      "492953170_122155518055552263_66832039297018466697_n.jpg",
+      "492963059_122155518485552263_567684405165067090758_n.jpg",
+      "493853270_122156817896552263_964694607903620160_n.jpg",
+      "493600270_122156818178552263_3575100592503428364_n.jpg",
+      "493685741_122156818365552263_8638043626727737647_n.jpg",
+      "494380395_122156818232552263_2575292552088606774_n.jpg",
+      "494422966_122156818352552263_87426228418382485570_n.jpg",
+
+      // Extras descriptivos
+      "Director headshot.jpg",
+      "Director con instructores.jpg",
+      "Foto 1 para reclutamiento.jpg",
+      "Foto 2 para Reclutamiento.jpg",
+      "Foto de primeros agentes.jpg",
+      "Foto del Director Acompañado de 2 policias municipales.jpg"
+    ];
+
+    // Construir la grilla
+    const grid = document.getElementById('grid');
+    const makeItem = (src, i) => {
+      const a = document.createElement('a');
+      a.href = `/images/${src}`;
+      a.dataset.index = i;
+      const img = document.createElement('img');
+      img.src = `/images/${src}`;
+      img.alt = `Foto ${i+1}`;
+      a.appendChild(img);
+      a.addEventListener('click', (e)=>{ e.preventDefault(); openLightbox(i); });
+      return a;
+    };
+    files.forEach((f,i)=> grid.appendChild(makeItem(f,i)));
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const big = document.getElementById('bigImg');
+    const cap = document.getElementById('caption');
+    const btnClose = lb.querySelector('.lightbox__close');
+    const btnPrev = lb.querySelector('.lightbox__prev');
+    const btnNext = lb.querySelector('.lightbox__next');
+    let at = 0;
+
+    function openLightbox(i){
+      at = i;
+      big.src = `/images/${files[at]}`;
+      big.alt = `Imagen ${at+1} de ${files.length}`;
+      cap.textContent = files[at];
+      lb.classList.add('show');
+      lb.setAttribute('aria-hidden','false');
+    }
+    function closeLightbox(){
+      lb.classList.remove('show');
+      lb.setAttribute('aria-hidden','true');
+      big.src = '';
+    }
+    function move(dx){
+      at = (at + dx + files.length) % files.length;
+      big.src = `/images/${files[at]}`;
+      big.alt = `Imagen ${at+1} de ${files.length}`;
+      cap.textContent = files[at];
+    }
+
+    btnClose.addEventListener('click', closeLightbox);
+    btnPrev.addEventListener('click', ()=>move(-1));
+    btnNext.addEventListener('click', ()=>move(1));
+    lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLightbox(); });
+    document.addEventListener('keydown', (e)=>{
+      if(!lb.classList.contains('show')) return;
+      if(e.key==='Escape') closeLightbox();
+      if(e.key==='ArrowLeft') move(-1);
+      if(e.key==='ArrowRight') move(1);
+    });
+  </script>
+</body>
+</html>
