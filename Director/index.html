@@ -4,46 +4,176 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Despacho del Director — Policía Municipal de Vallejuelo</title>
-  <meta name="description" content="Despacho del Director de la Policía Municipal de Vallejuelo." />
-  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <meta name="description" content="Despacho del Director de la Policía Municipal de Vallejuelo. Información institucional, contacto y galería." />
+
+  <!-- Favicon e interfaz (rutas relativas desde /Director/) -->
+  <link rel="icon" type="image/png" href="../images/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="../style.css" />
+
   <style>
-    .page {max-width: 1100px; margin: 0 auto; padding: 2rem 1rem;}
-    .card {display:grid; grid-template-columns: 220px 1fr; gap:1.5rem; align-items:start; background:#0d1b2a; border:1px solid #1f2f46; border-radius:18px; padding:1.5rem;}
-    .card img{width:100%; border-radius:14px; background:#fff;}
-    .lead{font-size:1.05rem; line-height:1.7;}
-    .meta{margin:.25rem 0 1rem; color:#a8b3c7}
-    @media (max-width:780px){ .card{grid-template-columns:1fr} }
+    /* ====== Estilos específicos de esta página ====== */
+    .page{max-width:1100px;margin:0 auto;padding:2rem 1rem}
+    .intro{
+      display:grid;gap:1.25rem;
+      grid-template-columns: 320px 1fr;
+      align-items:start;
+    }
+    .card{
+      background:#0d1b2a;border:1px solid #1f2f46;border-radius:16px;
+      padding:1rem; box-shadow:0 10px 24px rgba(0,0,0,.25); color:#cfe3ff;
+    }
+    .portrait{
+      background:#fff;border-radius:14px;overflow:hidden;
+      box-shadow:0 10px 20px rgba(0,0,0,.25)
+    }
+    .portrait img{display:block;width:100%;height:auto}
+    .h2{margin:.2rem 0 1rem;font-size:1.75rem;color:#fff}
+    .meta{color:#a8b3c7}
+    .list{margin:.5rem 0 0 1rem}
+    .cta-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
+    .btn--soft{
+      background:transparent;border:2px solid rgba(255,255,255,.25);
+      color:#eaf2ff;padding:.6rem 1rem;border-radius:12px;font-weight:700
+    }
+
+    /* Galería */
+    .gallery{display:grid;gap:1rem;grid-template-columns:repeat(3,1fr);margin-top:1rem}
+    .gallery a{
+      display:block;background:#fff;border-radius:12px;overflow:hidden;
+      box-shadow:0 10px 20px rgba(0,0,0,.25)
+    }
+    .gallery img{width:100%;height:auto;display:block;transition:transform .2s ease}
+    .gallery a:hover img{transform:scale(1.03)}
+
+    /* Lightbox con :target (sin JS extra) */
+    .lightbox{
+      position:fixed;inset:0;background:rgba(0,0,0,.75);
+      display:none;align-items:center;justify-content:center;z-index:2000;
+      padding:1rem;
+    }
+    .lightbox:target{display:flex}
+    .lightbox__img{
+      max-width:95vw;max-height:90vh;border-radius:12px;background:#fff
+    }
+    .lightbox__close{
+      position:fixed;top:12px;right:16px;
+      background:#fff;color:#0d1b2a;border-radius:10px;
+      padding:.4rem .65rem;font-weight:800;text-decoration:none
+    }
+
+    /* Responsive */
+    @media (max-width:900px){
+      .intro{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:560px){
+      .gallery{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
+  <!-- Topbar institucional -->
+  <header class="topbar" role="banner">
+    <a class="brand brand--left" href="https://ayuntamientovallejuelo.gob.do/" aria-label="Ayuntamiento Municipal de Vallejuelo">
+      <img src="../images/logo-ayuntamiento.jpg" alt="Logo Ayuntamiento Municipal de Vallejuelo" class="brand__logo">
+    </a>
+    <div class="topbar__title" aria-label="Nombre de la institución">
+      <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
+      <strong>Policía Municipal</strong>
+    </div>
+    <a class="brand brand--right" href="https://presidencia.gob.do/" aria-label="Presidencia de la República Dominicana">
+      <img src="../images/escudo-rd.png" alt="Escudo de la República Dominicana" class="brand__logo">
+    </a>
+  </header>
+
   <main class="page">
-    <h1>Despacho del Director</h1>
+    <h1 class="h2">Despacho del Director</h1>
 
-    <section class="card">
-      <img src="/images/Foto para el Perfil del Director.jpg" alt="Director de la Policía Municipal de Vallejuelo">
-      <div>
-        <h2 style="margin:0">David José Rivera Caro</h2>
-        <div class="meta">Director de la Policía Municipal de Vallejuelo</div>
-        <p class="lead">
-          Funcionario municipal comprometido con la convivencia pacífica, la seguridad ciudadana y la
-          colaboración permanente con nuestras juntas de vecinos, instituciones y autoridades locales.
-        </p>
-        <p class="lead">
-          Experiencia en gestión pública municipal, operativos de ordenamiento, educación vial y
-          mediación comunitaria. Enfoque en transparencia, respeto a los derechos y servicio cercano a la gente.
+    <section class="intro">
+      <!-- Foto de perfil -->
+      <aside class="card portrait" aria-label="Fotografía del Director">
+        <img src="../images/Director%20headshot.png" alt="Director: Coronel Lic. David José Rivera Caro, M.A.">
+      </aside>
+
+      <!-- Datos institucionales -->
+      <article class="card">
+        <h2 class="h2" style="margin-top:0;">Coronel Lic. David José Rivera Caro, M.A.</h2>
+        <p class="meta">Director de la Policía Municipal de Vallejuelo</p>
+        <ul class="list">
+          <li><strong>Teléfono:</strong> 809-546-0616</li>
+          <li><strong>Correo:</strong> <a class="link" href="mailto:director@policiamunicipalvallejuelo.com.do">director@policiamunicipalvallejuelo.com.do</a></li>
+          <li><strong>Dirección de oficina:</strong>
+            <a class="link" href="https://maps.app.goo.gl/Qvp8DBDtWRc59D3A7" target="_blank" rel="noopener">
+              Calle Independencia, casi esquina José Muba, Vallejuelo, San Juan
+            </a>
+          </li>
+        </ul>
+
+        <p style="margin-top:1rem">
+          “Por amor a mi pueblo, siempre al servicio.” Nuestro compromiso es asegurar el orden municipal, la protección de los
+          espacios públicos y el acercamiento permanente con la comunidad.
         </p>
 
-        <div style="margin-top:1rem; display:flex; gap:.75rem; flex-wrap:wrap">
-          <a class="btn btn--primary" href="https://forms.zoho.com/directorpoliciamunici1/form/Contactwithfile" target="_blank" rel="noopener">Escribir al Despacho</a>
-          <a class="btn btn--ghost" href="/docs/">Ver Documentos</a>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="https://forms.zoho.com/directorpoliciamunici1/form/Contactwithfile" target="_blank" rel="noopener">Solicitar reunión / enviar mensaje</a>
+          <a class="btn btn--soft" href="../docs/Codigo_de_Etica_Policia_Municipal_vallejuelo.pdf" target="_blank" rel="noopener">Código de Ética</a>
+          <a class="btn btn--soft" href="../docs/Manual_de_la_Policia_Municipal_Vallejuelo.pdf" target="_blank" rel="noopener">Manual</a>
+          <a class="btn btn--soft" href="../docs/Estatutos_Policia_Municipal_vallejuelo.pdf" target="_blank" rel="noopener">Estatutos</a>
         </div>
+      </article>
+    </section>
 
-        <hr style="margin:1.25rem 0; border-color:#1f2f46">
-        <p><strong>Contacto:</strong> <a class="link" href="mailto:director@policiamunicipalvallejuelo.com.do">director@policiamunicipalvallejuelo.com.do</a> · <strong>Tel.:</strong> 809-546-0616</p>
+    <!-- Galería (clic para ampliar) -->
+    <section class="section" aria-label="Galería del Director" style="padding:1rem">
+      <h2 class="h2">Galería</h2>
+      <div class="gallery">
+        <a href="#foto1">
+          <img src="../images/Director%20con%20instructores.jpg" alt="Director con instructores">
+        </a>
+        <a href="#foto2">
+          <img src="../images/Foto%20del%20Director%20Acompa%C3%B1ado%20de%202%20policias%20municipales.jpg" alt="Director acompañado de dos policías municipales">
+        </a>
+        <a href="#foto3">
+          <img src="../images/Foto%20de%20primeros%20agentes.jpg" alt="Primeros agentes PMV">
+        </a>
+      </div>
+    </section>
+
+    <!-- Lightboxs -->
+    <div id="foto1" class="lightbox" role="dialog" aria-label="Foto ampliada 1">
+      <a href="#" class="lightbox__close" aria-label="Cerrar">Cerrar ✕</a>
+      <img class="lightbox__img" src="../images/Director%20con%20instructores.jpg" alt="">
+    </div>
+    <div id="foto2" class="lightbox" role="dialog" aria-label="Foto ampliada 2">
+      <a href="#" class="lightbox__close" aria-label="Cerrar">Cerrar ✕</a>
+      <img class="lightbox__img" src="../images/Foto%20del%20Director%20Acompa%C3%B1ado%20de%202%20policias%20municipales.jpg" alt="">
+    </div>
+    <div id="foto3" class="lightbox" role="dialog" aria-label="Foto ampliada 3">
+      <a href="#" class="lightbox__close" aria-label="Cerrar">Cerrar ✕</a>
+      <img class="lightbox__img" src="../images/Foto%20de%20primeros%20agentes.jpg" alt="">
+    </div>
+
+    <!-- Denuncias rápido -->
+    <section class="section" aria-label="Reportes y denuncias" style="padding:1rem">
+      <h2 class="h2">Reportes y denuncias</h2>
+      <p class="meta">Tu reporte es confidencial. Respuesta en 24–48 horas hábiles. Para emergencias, llama al <strong>809-546-0616</strong>.</p>
+      <div class="cta-row">
+        <a class="btn btn--primary" href="https://forms.zoho.com/directorpoliciamunici1/form/Contactwithfile" target="_blank" rel="noopener">Abrir formulario de denuncias</a>
+        <a class="btn btn--ghost" href="../docs/">Ver documentos</a>
       </div>
     </section>
   </main>
+
+  <footer class="footer" role="contentinfo">
+    <small>© <span id="year"></span> Policía Municipal de Vallejuelo · “Por amor a mi pueblo, siempre al servicio.”</small>
+  </footer>
+
+  <!-- JS global del sitio -->
+  <script src="../script.js"></script>
+  <script>
+    // Año dinámico (por si alguien llega directo a esta página)
+    (function(){var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();})();
+  </script>
 </body>
 </html>
