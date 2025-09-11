@@ -16,66 +16,102 @@
   <link rel="stylesheet" href="../../style.css" />
 
   <style>
-    /* Estilos específicos */
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
+    /* ===== Estilos específicos de esta página ===== */
+    .page{max-width:1200px;margin:0 auto;padding:2rem 1rem}
+
+    /* Logos grandes en el topbar (solo en esta página) */
+    .topbar .brand__logo{ height:120px; width:auto }
+
+    /* Logo PMV grande debajo del título, clic lleva al home */
+    .topbar__title .pmv-badge{
+      width:min(260px, 45vw);
+      margin:.5rem auto 0;
+      display:block;
+      background:#fff;
+      border-radius:16px;
+      padding:.55rem;
+      box-shadow:var(--shadow-1);
+      transition:transform .15s ease;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    figure {
-      background: #0d1b2a;
-      border: 1px solid #1f2f46;
-      border-radius: 14px;
-      padding: .75rem;
-      cursor: pointer;
-      transition: transform .2s ease;
-    }
-    figure:hover { transform: scale(1.02); }
-    figure img {
-      width: 100%;
-      border-radius: 10px;
-      background: #fff;
-      display: block;
-    }
-    figure figcaption {
-      margin-top: .5rem;
-      color: #a8b3c7;
-      font-size: 1rem;
-      text-align: center;
+    .topbar__title .pmv-badge:hover{ transform:translateY(-1px) }
+
+    /* Título principal: rojo y más grande */
+    .page h1{
+      margin:1.25rem 0 .35rem;
+      text-align:center;
+      font-size:clamp(1.9rem, 1.2rem + 2.4vw, 2.7rem);
+      font-weight:900;
+      color:#d72638; /* rojo */
+      letter-spacing:.01em;
+      text-shadow:0 2px 0 rgba(0,0,0,.18);
     }
 
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,.85);
-      justify-content: center;
-      align-items: center;
-    }
-    .modal img {
-      max-width: 90%;
-      max-height: 85%;
-      border-radius: 12px;
-      box-shadow: 0 12px 28px rgba(0,0,0,.6);
-    }
-    .modal:target {
-      display: flex;
+    /* Letrero “SOLO SE MUESTRAN…”: rojo, MAYÚSCULAS y más grande */
+    .only-actives{
+      margin:0 0 1.2rem;
+      text-align:center;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#d72638;
+      font-size:clamp(1.05rem, .9rem + .6vw, 1.25rem);
     }
 
-    /* Responsive */
-    @media (max-width: 820px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
+    /* Botonera superior */
+    .toolbar{
+      display:flex; justify-content:center; gap:.6rem;
+      margin:0 0 1.25rem;
     }
-    @media (max-width: 520px) {
-      .grid { grid-template-columns: 1fr; }
+
+    /* Grid de tarjetas (3 / 2 / 1) */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:1.5rem;
+      align-items:start;
+    }
+    @media (max-width: 820px){ .grid{ grid-template-columns:repeat(2, 1fr) } }
+    @media (max-width: 520px){ .grid{ grid-template-columns:1fr } }
+
+    figure{
+      background:#0d1b2a;
+      border:1px solid #1f2f46;
+      border-radius:14px;
+      padding:.85rem;
+      box-shadow:0 10px 24px rgba(0,0,0,.25);
+      cursor:pointer;
+      transition:transform .2s ease;
+    }
+    figure:hover{ transform:scale(1.02) }
+    figure img{
+      width:100%;
+      border-radius:12px;
+      background:#fff;
+      display:block;
+    }
+    figure figcaption{
+      margin-top:.6rem;
+      color:#c7d2e2;
+      font-size:1.05rem;
+      text-align:center;
+      font-weight:600;
+      line-height:1.35;
+    }
+
+    /* Modal (lightbox) */
+    .modal{
+      display:none;
+      position:fixed; inset:0;
+      z-index:2000;
+      background:rgba(0,0,0,.88);
+      justify-content:center; align-items:center;
+      padding:18px;
+    }
+    .modal img{
+      max-width:92%;
+      max-height:86%;
+      border-radius:12px;
+      box-shadow:0 14px 32px rgba(0,0,0,.55);
     }
   </style>
 </head>
@@ -86,9 +122,13 @@
       <img src="../../images/logo-ayuntamiento.jpg" alt="Logo Ayuntamiento Municipal de Vallejuelo" class="brand__logo">
     </a>
 
-    <div class="topbar__title">
+    <div class="topbar__title" aria-label="Nombre de la institución">
       <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
       <strong>Policía Municipal</strong>
+      <!-- Logo PMV grande y clicable al home -->
+      <a href="/" aria-label="Ir al inicio">
+        <img class="pmv-badge" src="../../images/logo-pmv.jpg" alt="Logo Policía Municipal de Vallejuelo">
+      </a>
     </div>
 
     <a class="brand brand--right" href="https://presidencia.gob.do/" aria-label="Presidencia de la República Dominicana">
@@ -98,62 +138,66 @@
 
   <main class="page">
     <h1>Agentes Activos — Oficiales Subalternos</h1>
-    <p class="muted">Solo se muestran agentes activos.</p>
+    <p class="only-actives">Solo se muestran agentes activos</p>
+
+    <div class="toolbar">
+      <a href="/" class="btn btn--ghost">Página principal</a>
+    </div>
 
     <div class="grid">
-      <figure onclick="openModal('./fran.jpeg','Fran')">
-        <img src="./fran.jpeg" alt="Fran">
+      <figure onclick="openModal('./fran.jpeg','Francisco Gonzalez Encarnacion — 2do Teniente')">
+        <img src="./fran.jpeg" alt="Francisco Gonzalez Encarnacion — 2do Teniente">
         <figcaption>Francisco Gonzalez Encarnacion — 2do Teniente</figcaption>
       </figure>
-      
-      <figure onclick="openModal('./genisis.jpg','genisis')">
-        <img src="./genisis.jpg" alt="genisis">
-        <figcaption>Genisis Florian Florian — Capitan</figcaption>
+
+      <figure onclick="openModal('./genisis.jpg','Genisis Florian Florian — Capitán')">
+        <img src="./genisis.jpg" alt="Genisis Florian Florian — Capitán">
+        <figcaption>Genisis Florian Florian — Capitán</figcaption>
       </figure>
-      
-      <figure onclick="openModal('./alfonso.jpeg','Alfonso — Capitán')">
-        <img src="./alfonso.jpeg" alt="Alfonso">
+
+      <figure onclick="openModal('./alfonso.jpeg','Alfonso Jesus Martinez Encarnacion — 1er Teniente')">
+        <img src="./alfonso.jpeg" alt="Alfonso Jesus Martinez Encarnacion — 1er Teniente">
         <figcaption>Alfonso Jesus Martinez Encarnacion — 1er Teniente</figcaption>
       </figure>
 
-      <figure onclick="openModal('./tito.jpeg','Tito — Primer Teniente')">
-        <img src="./tito.jpeg" alt="Tito">
-        <figcaption>Tito Encarnacion Galva — Capitan</figcaption>
+      <figure onclick="openModal('./tito.jpeg','Tito Encarnacion Galva — Capitán')">
+        <img src="./tito.jpeg" alt="Tito Encarnacion Galva — Capitán">
+        <figcaption>Tito Encarnacion Galva — Capitán</figcaption>
       </figure>
 
-      <figure onclick="openModal('./fernelis.jpeg','Fernelis — Primer Teniente')">
-        <img src="./fernelis.jpeg" alt="Fernelis">
+      <figure onclick="openModal('./fernelis.jpeg','Fernelis de la Rosa Castillo — 1er Teniente')">
+        <img src="./fernelis.jpeg" alt="Fernelis de la Rosa Castillo — 1er Teniente">
         <figcaption>Fernelis de la Rosa Castillo — 1er Teniente</figcaption>
       </figure>
 
-      <figure onclick="openModal('./felix.jpeg','Félix — Segundo Teniente')">
-        <img src="./felix.jpeg" alt="Felix">
-        <figcaption>Félix Manuel Montero Martinez — Capitan</figcaption>
+      <figure onclick="openModal('./felix.jpeg','Félix Manuel Montero Martinez — Capitán')">
+        <img src="./felix.jpeg" alt="Félix Manuel Montero Martinez — Capitán">
+        <figcaption>Félix Manuel Montero Martinez — Capitán</figcaption>
       </figure>
 
-      <figure onclick="openModal('./jonathan.jpeg','jonathan')">
-        <img src="./jonathan.jpeg" alt="jonathan">
+      <figure onclick="openModal('./jonathan.jpeg','Jonathan Vargas Gonzalez — 2do Teniente')">
+        <img src="./jonathan.jpeg" alt="Jonathan Vargas Gonzalez — 2do Teniente">
         <figcaption>Jonathan Vargas Gonzalez — 2do Teniente</figcaption>
       </figure>
 
-      <figure onclick="openModal('./plinio.jpg','plinio')">
-        <img src="./plinio.jpg" alt="plinio">
+      <figure onclick="openModal('./plinio.jpg','Plinio Vicente Montero — 1er Teniente')">
+        <img src="./plinio.jpg" alt="Plinio Vicente Montero — 1er Teniente">
         <figcaption>Plinio Vicente Montero — 1er Teniente</figcaption>
       </figure>
 
-      <figure onclick="openModal('./geiry.jpg','geiry')">
-        <img src="./geiry.jpg" alt="geiry">
+      <figure onclick="openModal('./geiry.jpg','Geiry Vicente Bido — 2do Teniente')">
+        <img src="./geiry.jpg" alt="Geiry Vicente Bido — 2do Teniente">
         <figcaption>Geiry Vicente Bido — 2do Teniente</figcaption>
       </figure>
-      
-      <figure onclick="openModal('./fernando.jpg','fernando')">
-        <img src="./fernando.jpg" alt="fernando">
+
+      <figure onclick="openModal('./fernando.jpg','Fernando Gonzalez Martinez — 2do Teniente')">
+        <img src="./fernando.jpg" alt="Fernando Gonzalez Martinez — 2do Teniente">
         <figcaption>Fernando Gonzalez Martinez — 2do Teniente</figcaption>
       </figure>
-      </div>
+    </div>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <small>© <span id="year"></span> Policía Municipal de Vallejuelo · “Por amor a mi pueblo, siempre al servicio.”</small>
   </footer>
 
@@ -164,17 +208,24 @@
 
   <script>
     // Año dinámico
-    document.getElementById('year').textContent = new Date().getFullYear();
+    (function(){
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
 
-    // Funciones modal
+    // Modal simple
     function openModal(src, alt){
-      document.getElementById('modalImg').src = src;
-      document.getElementById('modalImg').alt = alt;
-      document.getElementById('imgModal').style.display = 'flex';
+      const m = document.getElementById('imgModal');
+      const i = document.getElementById('modalImg');
+      i.src = src; i.alt = alt || '';
+      m.style.display = 'flex';
     }
     function closeModal(){
-      document.getElementById('imgModal').style.display = 'none';
+      const m = document.getElementById('imgModal');
+      const i = document.getElementById('modalImg');
+      i.src = ''; m.style.display = 'none';
     }
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
   </script>
 </body>
 </html>
