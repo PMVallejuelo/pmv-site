@@ -12,58 +12,64 @@
   <!-- Tipografía -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Estilos globales -->
+  <!-- Estilos globales del sitio -->
   <link rel="stylesheet" href="../../style.css" />
 
   <style>
     /* ===== Estilos específicos de esta página ===== */
-    :root{ --header-badge:84px; }              /* tamaño único para los 3 logos */
-
     .page{max-width:1200px;margin:0 auto;padding:2rem 1rem}
 
-    /* Igualar tamaño de logos del header */
-    .topbar .brand__logo{ height:var(--header-badge); width:auto; }
-
-    /* Logo PMV debajo del texto del header, con el mismo tamaño y como link */
-    .topbar__title .pmv-badge{
-      height:var(--header-badge);
+    /* Tamaños GRANDES y unificados de los logos del header */
+    .brand__logo{ /* sobreescribe el tamaño global solo en esta página */
+      height:120px !important; /* mismo alto que el logo PMV */
       width:auto;
-      margin:.45rem auto 0;
+    }
+    .topbar__title .pmv-badge{
+      height:120px;        /* tamaño “anterior” (más grande) */
+      width:auto;
+      margin:.5rem auto 0;
       display:block;
       background:#fff;
-      border-radius:14px;
-      padding:.45rem;
+      border-radius:16px;
+      padding:.55rem;
       box-shadow:var(--shadow-1);
     }
+    .pmv-badge-link{ display:inline-block }
 
-    /* Título principal: rojo, más grande y llamativo */
+    /* Título principal: rojo, grande y llamativo */
     .page h1{
       margin:1.25rem 0 .35rem;
       text-align:center;
-      font-size:clamp(2rem, 1.1rem + 2.6vw, 3rem);
+      font-size:clamp(2rem, 1.2rem + 2.8vw, 3rem);
       font-weight:900;
-      color:#d72638; /* ROJO */
+      color:#d72638;                 /* ROJO */
       text-shadow:0 2px 0 rgba(0,0,0,.25);
       letter-spacing:.01em;
     }
 
-    /* Aviso “solo activos”: mayúsculas, rojo y un poco más grande */
+    /* Aviso “SOLO SE MUESTRAN AGENTES ACTIVOS” en ROJO y más grande */
     .only-actives{
       margin:.25rem 0 1.1rem;
       text-align:center;
       font-weight:900;
-      letter-spacing:.06em;
+      letter-spacing:.08em;
       text-transform:uppercase;
-      color:#d72638;      /* rojo */
-      font-size:clamp(1.05rem, .9rem + .7vw, 1.35rem);
+      color:#ff3b3b;                /* rojo vivo */
+      font-size:clamp(1.05rem, .9rem + .9vw, 1.45rem);
     }
 
-    /* Contenedor del botón bajo el aviso */
-    .page-actions{
-      display:flex; justify-content:center; gap:.6rem; margin-bottom:1.4rem;
+    .actions{
+      display:flex; justify-content:center; gap:.6rem; margin-bottom:1.8rem;
     }
+    .btn-home{
+      background:#123e79; color:#fff;
+      border:1px solid rgba(255,255,255,.12);
+      padding:.7rem 1.1rem; border-radius:12px; font-weight:800;
+      text-decoration:none; box-shadow:var(--shadow-1);
+    }
+    .btn-home:hover{ filter:brightness(1.05) }
 
-    /* Tarjetas (2 columnas desktop, 1 en móvil) */
+    /* Tarjetas (2 columnas en escritorio, 1 en móvil) */
     .grid{
       display:grid;
       grid-template-columns:repeat(2, minmax(360px,1fr));
@@ -113,8 +119,8 @@
     <div class="topbar__title" aria-label="Nombre de la institución">
       <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
       <strong>Policía Municipal</strong>
-      <!-- Logo PMV debajo del texto y como link a la página principal -->
-      <a href="/" aria-label="Volver a la página principal">
+      <!-- Logo PMV grande y con enlace a la página principal -->
+      <a class="pmv-badge-link" href="/" aria-label="Ir a la página principal">
         <img class="pmv-badge" src="../../images/logo-pmv.jpg" alt="Logo Policía Municipal de Vallejuelo">
       </a>
     </div>
@@ -128,9 +134,8 @@
     <h1>Agentes Activos — Oficiales Superiores</h1>
     <p class="only-actives">Solo se muestran agentes activos</p>
 
-    <!-- Botón a la página principal -->
-    <div class="page-actions">
-      <a href="/" class="btn btn--primary">Página principal</a>
+    <div class="actions">
+      <a class="btn-home" href="/">Página principal</a>
     </div>
 
     <div class="grid">
@@ -146,13 +151,13 @@
       </figure>
 
       <figure>
-        <img loading="lazy" src="./rolando.jpeg" alt="Rolando Encarnacion">
-        <figcaption>Rolando Encarnacion — Mayor</figcaption>
+        <img loading="lazy" src="./rolando.jpeg" alt="Rolando Encarnación">
+        <figcaption>Rolando Encarnación — Mayor</figcaption>
       </figure>
 
       <figure>
-        <img loading="lazy" src="./santo.jpeg" alt="Santo Gonzalez">
-        <figcaption>Santo Gonzalez — Mayor</figcaption>
+        <img loading="lazy" src="./santo.jpeg" alt="Santo González">
+        <figcaption>Santo González — Mayor</figcaption>
       </figure>
     </div>
   </main>
