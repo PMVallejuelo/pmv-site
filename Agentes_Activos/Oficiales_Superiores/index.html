@@ -17,12 +17,18 @@
 
   <style>
     /* ===== Estilos específicos de esta página ===== */
+    :root{ --header-badge:84px; }              /* tamaño único para los 3 logos */
+
     .page{max-width:1200px;margin:0 auto;padding:2rem 1rem}
 
-    /* Logo PMV debajo del título del header */
+    /* Igualar tamaño de logos del header */
+    .topbar .brand__logo{ height:var(--header-badge); width:auto; }
+
+    /* Logo PMV debajo del texto del header, con el mismo tamaño y como link */
     .topbar__title .pmv-badge{
-      width:min(160px,28vw);
-      margin:.35rem auto 0;
+      height:var(--header-badge);
+      width:auto;
+      margin:.45rem auto 0;
       display:block;
       background:#fff;
       border-radius:14px;
@@ -30,26 +36,31 @@
       box-shadow:var(--shadow-1);
     }
 
-    /* Título principal más grande y llamativo */
+    /* Título principal: rojo, más grande y llamativo */
     .page h1{
       margin:1.25rem 0 .35rem;
       text-align:center;
-      font-size:clamp(1.8rem, 1.2rem + 2.2vw, 2.6rem);
-      font-weight:800;
-      color:var(--pmv-dorado);
+      font-size:clamp(2rem, 1.1rem + 2.6vw, 3rem);
+      font-weight:900;
+      color:#d72638; /* ROJO */
       text-shadow:0 2px 0 rgba(0,0,0,.25);
       letter-spacing:.01em;
     }
 
-    /* Letrero de "solo activos" en mayúsculas, verde y destacado */
+    /* Aviso “solo activos”: mayúsculas, rojo y un poco más grande */
     .only-actives{
-      margin:0 0 1.6rem;
+      margin:.25rem 0 1.1rem;
       text-align:center;
       font-weight:900;
       letter-spacing:.06em;
       text-transform:uppercase;
-      color:#22c55e; /* verde */
-      font-size:clamp(1rem, .85rem + .6vw, 1.2rem);
+      color:#d72638;      /* rojo */
+      font-size:clamp(1.05rem, .9rem + .7vw, 1.35rem);
+    }
+
+    /* Contenedor del botón bajo el aviso */
+    .page-actions{
+      display:flex; justify-content:center; gap:.6rem; margin-bottom:1.4rem;
     }
 
     /* Tarjetas (2 columnas desktop, 1 en móvil) */
@@ -102,8 +113,10 @@
     <div class="topbar__title" aria-label="Nombre de la institución">
       <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
       <strong>Policía Municipal</strong>
-      <!-- Logo PMV debajo del texto -->
-      <img class="pmv-badge" src="../../images/logo-pmv.jpg" alt="Logo Policía Municipal de Vallejuelo">
+      <!-- Logo PMV debajo del texto y como link a la página principal -->
+      <a href="/" aria-label="Volver a la página principal">
+        <img class="pmv-badge" src="../../images/logo-pmv.jpg" alt="Logo Policía Municipal de Vallejuelo">
+      </a>
     </div>
 
     <a class="brand brand--right" href="https://presidencia.gob.do/" aria-label="Presidencia de la República Dominicana">
@@ -114,6 +127,11 @@
   <main class="page">
     <h1>Agentes Activos — Oficiales Superiores</h1>
     <p class="only-actives">Solo se muestran agentes activos</p>
+
+    <!-- Botón a la página principal -->
+    <div class="page-actions">
+      <a href="/" class="btn btn--primary">Página principal</a>
+    </div>
 
     <div class="grid">
       <!-- Tarjetas -->
