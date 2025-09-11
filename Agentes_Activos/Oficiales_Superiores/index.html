@@ -6,26 +6,60 @@
   <title>Agentes Activos — Oficiales Superiores</title>
   <meta name="description" content="Listado oficial de agentes activos — Oficiales Superiores de la Policía Municipal de Vallejuelo." />
 
-  <!-- Favicon (desde esta carpeta sube dos niveles) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="../../images/favicon.png" />
 
   <!-- Tipografía -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Estilos globales del sitio -->
+  <!-- Estilos globales -->
   <link rel="stylesheet" href="../../style.css" />
 
   <style>
     /* ===== Estilos específicos de esta página ===== */
     .page{max-width:1200px;margin:0 auto;padding:2rem 1rem}
 
-    /* 3x más grandes: 2 columnas en escritorio, 1 en móvil */
+    /* Logo PMV debajo del título del header */
+    .topbar__title .pmv-badge{
+      width:min(160px,28vw);
+      margin:.35rem auto 0;
+      display:block;
+      background:#fff;
+      border-radius:14px;
+      padding:.45rem;
+      box-shadow:var(--shadow-1);
+    }
+
+    /* Título principal más grande y llamativo */
+    .page h1{
+      margin:1.25rem 0 .35rem;
+      text-align:center;
+      font-size:clamp(1.8rem, 1.2rem + 2.2vw, 2.6rem);
+      font-weight:800;
+      color:var(--pmv-dorado);
+      text-shadow:0 2px 0 rgba(0,0,0,.25);
+      letter-spacing:.01em;
+    }
+
+    /* Letrero de "solo activos" en mayúsculas, verde y destacado */
+    .only-actives{
+      margin:0 0 1.6rem;
+      text-align:center;
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:#22c55e; /* verde */
+      font-size:clamp(1rem, .85rem + .6vw, 1.2rem);
+    }
+
+    /* Tarjetas (2 columnas desktop, 1 en móvil) */
     .grid{
       display:grid;
       grid-template-columns:repeat(2, minmax(360px,1fr));
       gap:2rem;
       align-items:start;
     }
+    @media (max-width:900px){ .grid{grid-template-columns:1fr} }
 
     figure{
       background:#0d1b2a;
@@ -36,11 +70,8 @@
       cursor:pointer;
     }
     figure img{
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius:12px;
-      background:#fff;
+      width:100%; height:auto; display:block;
+      border-radius:12px; background:#fff;
       transition:transform .2s ease;
     }
     figure img:hover{ transform:scale(1.03) }
@@ -53,51 +84,16 @@
       text-align:center;
     }
 
-    .page h1{margin:1rem 0 .5rem}
-    .page .muted{margin:0 0 1.5rem}
-
-    @media (max-width:900px){
-      .grid{grid-template-columns:1fr}
-    }
-
-    /* --- Modal para agrandar imágenes --- */
-    .modal{
-      display:none;
-      position:fixed;
-      z-index:9999;
-      inset:0;
-      padding:60px 16px 24px;
-      background:rgba(0,0,0,.9);
-    }
-    .modal-content{
-      display:block;
-      margin:0 auto;
-      max-width:90%;
-      max-height:85vh;
-      border-radius:12px;
-      box-shadow:0 10px 28px rgba(0,0,0,.45);
-    }
-    .modal figcaption{
-      text-align:center;
-      color:#fff;
-      margin-top:1rem;
-      font-size:1.1rem;
-    }
-    .close{
-      position:absolute;
-      top:18px; right:26px;
-      color:#fff;
-      font-size:40px;
-      line-height:1;
-      font-weight:800;
-      cursor:pointer;
-      user-select:none;
-    }
+    /* Modal para agrandar imágenes */
+    .modal{ display:none; position:fixed; z-index:9999; inset:0; padding:60px 16px 24px; background:rgba(0,0,0,.9) }
+    .modal-content{ display:block; margin:0 auto; max-width:90%; max-height:85vh; border-radius:12px; box-shadow:0 10px 28px rgba(0,0,0,.45) }
+    .modal figcaption{ text-align:center; color:#fff; margin-top:1rem; font-size:1.1rem }
+    .close{ position:absolute; top:18px; right:26px; color:#fff; font-size:40px; line-height:1; font-weight:800; cursor:pointer; user-select:none }
     .close:hover{ color:#d72638 }
   </style>
 </head>
 <body>
-  <!-- Topbar con logotipos (igual que en el home) -->
+  <!-- Topbar -->
   <header class="topbar" role="banner">
     <a class="brand brand--left" href="https://ayuntamientovallejuelo.gob.do/" aria-label="Ayuntamiento Municipal de Vallejuelo">
       <img src="../../images/logo-ayuntamiento.jpg" alt="Logo Ayuntamiento Municipal de Vallejuelo" class="brand__logo">
@@ -106,6 +102,8 @@
     <div class="topbar__title" aria-label="Nombre de la institución">
       <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
       <strong>Policía Municipal</strong>
+      <!-- Logo PMV debajo del texto -->
+      <img class="pmv-badge" src="../../images/logo-pmv.jpg" alt="Logo Policía Municipal de Vallejuelo">
     </div>
 
     <a class="brand brand--right" href="https://presidencia.gob.do/" aria-label="Presidencia de la República Dominicana">
@@ -115,12 +113,11 @@
 
   <main class="page">
     <h1>Agentes Activos — Oficiales Superiores</h1>
-    <p class="muted">Solo se muestran agentes activos.</p>
+    <p class="only-actives">Solo se muestran agentes activos</p>
 
     <div class="grid">
-      <!-- Tarjetas (puedes duplicar y cambiar imagen/leyenda) -->
+      <!-- Tarjetas -->
       <figure>
-        <!-- IMPORTANTE: en tu carpeta es .jpeg -->
         <img loading="lazy" src="./carnet-david-rivera.jpeg" alt="Carnet David José Rivera Caro">
         <figcaption>David José Rivera Caro — Coronel</figcaption>
       </figure>
@@ -139,17 +136,10 @@
         <img loading="lazy" src="./santo.jpeg" alt="Santo Gonzalez">
         <figcaption>Santo Gonzalez — Mayor</figcaption>
       </figure>
-
-      <!-- Ejemplo para duplicar:
-      <figure>
-        <img loading="lazy" src="./carnet-nombre-apellido.jpeg" alt="Carnet Nombre Apellido">
-        <figcaption>Nombre Apellido — Rango</figcaption>
-      </figure>
-      -->
     </div>
   </main>
 
-  <!-- Modal oculto -->
+  <!-- Modal -->
   <div id="imgModal" class="modal" aria-hidden="true">
     <span class="close" aria-label="Cerrar">&times;</span>
     <img class="modal-content" id="modalImg" alt="">
