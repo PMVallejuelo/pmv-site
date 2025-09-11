@@ -16,54 +16,60 @@
   <link rel="stylesheet" href="../../style.css" />
 
   <style>
-    /* ===== Estilos específicos de esta página ===== */
+    /* ===== Estilos específicos de esta página (mismo patrón que Oficiales Superiores) ===== */
     .page{max-width:1200px;margin:0 auto;padding:2rem 1rem}
 
-    /* Logos grandes en el topbar (solo en esta página) */
-    .topbar .brand__logo{ height:120px; width:auto }
-
-    /* Logo PMV grande debajo del título, clic lleva al home */
+    /* Tamaños GRANDES y unificados de los logos del header */
+    .brand__logo{ /* sobreescribe tamaño global solo aquí */
+      height:120px !important;
+      width:auto;
+    }
     .topbar__title .pmv-badge{
-      width:min(260px, 45vw);
+      height:120px;
+      width:auto;
       margin:.5rem auto 0;
       display:block;
       background:#fff;
       border-radius:16px;
       padding:.55rem;
       box-shadow:var(--shadow-1);
-      transition:transform .15s ease;
     }
-    .topbar__title .pmv-badge:hover{ transform:translateY(-1px) }
 
-    /* Título principal: rojo y más grande */
+    /* Título principal: rojo, grande y llamativo */
     .page h1{
       margin:1.25rem 0 .35rem;
       text-align:center;
-      font-size:clamp(1.9rem, 1.2rem + 2.4vw, 2.7rem);
+      font-size:clamp(2rem, 1.2rem + 2.8vw, 3rem);
       font-weight:900;
-      color:#d72638; /* rojo */
+      color:#d72638; /* ROJO */
+      text-shadow:0 2px 0 rgba(0,0,0,.25);
       letter-spacing:.01em;
-      text-shadow:0 2px 0 rgba(0,0,0,.18);
     }
 
-    /* Letrero “SOLO SE MUESTRAN…”: rojo, MAYÚSCULAS y más grande */
+    /* Aviso “SOLO SE MUESTRAN AGENTES ACTIVOS” en rojo y más grande */
     .only-actives{
-      margin:0 0 1.2rem;
+      margin:.25rem 0 1.1rem;
       text-align:center;
       font-weight:900;
       letter-spacing:.08em;
       text-transform:uppercase;
-      color:#d72638;
-      font-size:clamp(1.05rem, .9rem + .6vw, 1.25rem);
+      color:#ff3b3b;
+      font-size:clamp(1.05rem, .9rem + .9vw, 1.45rem);
     }
 
-    /* Botonera superior */
-    .toolbar{
-      display:flex; justify-content:center; gap:.6rem;
-      margin:0 0 1.25rem;
+    /* Botón de regreso */
+    .actions{
+      display:flex; justify-content:center; gap:.6rem; margin-bottom:1.6rem;
     }
+    .btn-home{
+      background:#123e79; color:#fff;
+      border:1px solid rgba(255,255,255,.12);
+      padding:.7rem 1.1rem; border-radius:12px; font-weight:800;
+      text-decoration:none; box-shadow:var(--shadow-1);
+    }
+    .btn-home:hover{ filter:brightness(1.05) }
 
-    /* Grid de tarjetas (3 / 2 / 1) */
+    /* Grid de tarjetas (3/2/1) */
     .grid{
       display:grid;
       grid-template-columns:repeat(3, 1fr);
@@ -76,43 +82,29 @@
     figure{
       background:#0d1b2a;
       border:1px solid #1f2f46;
-      border-radius:14px;
-      padding:.85rem;
+      border-radius:16px;
+      padding:.9rem;
       box-shadow:0 10px 24px rgba(0,0,0,.25);
       cursor:pointer;
       transition:transform .2s ease;
     }
     figure:hover{ transform:scale(1.02) }
     figure img{
-      width:100%;
-      border-radius:12px;
-      background:#fff;
-      display:block;
+      width:100%; height:auto; display:block;
+      border-radius:12px; background:#fff;
     }
     figure figcaption{
-      margin-top:.6rem;
+      margin-top:.7rem;
       color:#c7d2e2;
       font-size:1.05rem;
-      text-align:center;
       font-weight:600;
       line-height:1.35;
+      text-align:center;
     }
 
-    /* Modal (lightbox) */
-    .modal{
-      display:none;
-      position:fixed; inset:0;
-      z-index:2000;
-      background:rgba(0,0,0,.88);
-      justify-content:center; align-items:center;
-      padding:18px;
-    }
-    .modal img{
-      max-width:92%;
-      max-height:86%;
-      border-radius:12px;
-      box-shadow:0 14px 32px rgba(0,0,0,.55);
-    }
+    /* Modal para ampliar imágenes */
+    .modal{ display:none; position:fixed; z-index:9999; inset:0; padding:18px; background:rgba(0,0,0,.88); justify-content:center; align-items:center }
+    .modal img{ max-width:92%; max-height:86%; border-radius:12px; box-shadow:0 14px 32px rgba(0,0,0,.55) }
   </style>
 </head>
 <body>
@@ -125,8 +117,8 @@
     <div class="topbar__title" aria-label="Nombre de la institución">
       <span class="kicker">Ayuntamiento Municipal de Vallejuelo</span>
       <strong>Policía Municipal</strong>
-      <!-- Logo PMV grande y clicable al home -->
-      <a href="/" aria-label="Ir al inicio">
+      <!-- Logo PMV grande y con enlace a la página principal -->
+      <a class="pmv-badge-link" href="/" aria-label="Ir a la página principal">
         <img class="pmv-badge" src="../../images/logo-pmv.jpg" alt="Logo Policía Municipal de Vallejuelo">
       </a>
     </div>
@@ -140,8 +132,8 @@
     <h1>Agentes Activos — Oficiales Subalternos</h1>
     <p class="only-actives">Solo se muestran agentes activos</p>
 
-    <div class="toolbar">
-      <a href="/" class="btn btn--ghost">Página principal</a>
+    <div class="actions">
+      <a class="btn-home" href="/">Página principal</a>
     </div>
 
     <div class="grid">
@@ -197,14 +189,14 @@
     </div>
   </main>
 
-  <footer class="footer" role="contentinfo">
-    <small>© <span id="year"></span> Policía Municipal de Vallejuelo · “Por amor a mi pueblo, siempre al servicio.”</small>
-  </footer>
-
   <!-- Modal -->
   <div id="imgModal" class="modal" onclick="closeModal()">
     <img id="modalImg" src="" alt="">
   </div>
+
+  <footer class="footer" role="contentinfo">
+    <small>© <span id="year"></span> Policía Municipal de Vallejuelo · “Por amor a mi pueblo, siempre al servicio.”</small>
+  </footer>
 
   <script>
     // Año dinámico
@@ -213,7 +205,7 @@
       if (y) y.textContent = new Date().getFullYear();
     })();
 
-    // Modal simple
+    // Modal simple (coincide con el patrón aprobado)
     function openModal(src, alt){
       const m = document.getElementById('imgModal');
       const i = document.getElementById('modalImg');
@@ -223,7 +215,8 @@
     function closeModal(){
       const m = document.getElementById('imgModal');
       const i = document.getElementById('modalImg');
-      i.src = ''; m.style.display = 'none';
+      i.src = '';
+      m.style.display = 'none';
     }
     window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
   </script>
